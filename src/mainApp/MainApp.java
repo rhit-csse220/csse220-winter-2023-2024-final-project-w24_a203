@@ -22,6 +22,7 @@ public class MainApp {
 		MainApp mainApp = new MainApp();
 		mainApp.runApp();
 		System.out.println("HI");
+		System.out.println("Hello"); 
 	} // main
 
 }
