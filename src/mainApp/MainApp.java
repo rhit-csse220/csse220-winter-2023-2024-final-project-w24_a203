@@ -22,7 +22,8 @@ public class MainApp {
 		MainApp mainApp = new MainApp();
 		mainApp.runApp();
 		System.out.println("HI");
-		System.out.println("Hello"); 
+		System.out.println("Hello");
+		System.out.println("Testing push");
 	} // main
 
 }
