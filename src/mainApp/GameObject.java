@@ -27,6 +27,5 @@ public class GameObject {
 		g.fillRect(x, y, 20, 20);
 	}
 	
-	
 
 }

@@ -11,11 +11,13 @@ import javax.swing.JComponent;
  */
 public class MainComponent extends JComponent{
 	
-	GameObject testCoin = new GameObject(500,500,Color.ORANGE, "TEST");
+	GameObject testCoin = new GameObject(500,500,Color.ORANGE, "Test Coin");
+	GameObject testBarrier = new GameObject(400, 500, Color.cyan, "Test Barrier");
 
 	public MainComponent() {
 		// TODO Auto-generated constructor stub
 		System.out.println("In MainComponent File");
+		
 		
 		
 		
@@ -26,10 +28,12 @@ public class MainComponent extends JComponent{
 		Graphics2D g2 = (Graphics2D)g;
 		
 		testCoin.drawOn(g2);
+		testBarrier.drawOn(g2);
 		
 		// TODO Auto-generated method stub
 		super.paintComponent(g);
 		
 	}
+	
 
 }
