@@ -1,18 +1,21 @@
 package mainApp;
 
 import java.awt.Color;
+import java.awt.event.KeyListener;
 
 /**
  * TODO: ADD JAVA DOC HERE
  */
 public class Hero extends GameObject{
 	private int velocity,x,y;
+	private HeroListener keyboard;
 
 	public Hero(int x, int y, Color color, String type) {
 		// TODO Auto-generated constructor stub
 		super(x,y,color,type);
 		this.velocity = 0;
 		this.y = y;
+		this.keyboard = new HeroListener();
 	}
 
 	public void move() {
