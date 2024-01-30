@@ -13,6 +13,8 @@ public class MainComponent extends JComponent{
 	
 	GameObject testCoin = new GameObject(500,500,Color.ORANGE, "Test Coin");
 	GameObject testBarrier = new GameObject(400, 500, Color.cyan, "Test Barrier");
+	
+	Hero hero = new Hero(600, 500, Color.BLACK, "Hero");
 
 	public MainComponent() {
 		// TODO Auto-generated constructor stub
@@ -29,11 +31,16 @@ public class MainComponent extends JComponent{
 		
 		testCoin.drawOn(g2);
 		testBarrier.drawOn(g2);
+		hero.drawOn(g2);
 		
 		// TODO Auto-generated method stub
 		super.paintComponent(g);
 		
 	}
-	
+
+	public void move() {
+		// TODO Auto-generated method stub
+		hero.move();
+	}
 
 }

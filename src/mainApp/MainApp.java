@@ -21,6 +21,7 @@ public class MainApp {
 	
 	public static final Dimension FRAME_SIZE = new Dimension(1500, 800);
 	public static final int DELAY = 50;
+	public static final int SCREEN_HEIGHT = 800;
 	
 	private void runApp() {
 		System.out.println("Write your cool arcade game here!");	
@@ -40,6 +41,7 @@ public class MainApp {
 
 //				mainComponent.update(null);
 				mainComponent.repaint();
+				mainComponent.move();
 				
 				frame.repaint();
 			}
@@ -64,5 +66,8 @@ public class MainApp {
 		MainApp mainApp = new MainApp();
 		mainApp.runApp();
 	} // main
-
+	
+	public static int getHeight() {
+		return SCREEN_HEIGHT;
+	}
 }

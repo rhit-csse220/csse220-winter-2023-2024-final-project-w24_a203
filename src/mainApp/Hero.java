@@ -1,12 +1,31 @@
 package mainApp;
 
+import java.awt.Color;
+
 /**
  * TODO: ADD JAVA DOC HERE
  */
-public class Hero {
+public class Hero extends GameObject{
+	private int velocity,x,y;
 
-	public Hero() {
+	public Hero(int x, int y, Color color, String type) {
 		// TODO Auto-generated constructor stub
+		super(x,y,color,type);
+		this.velocity = 0;
+		this.y = y;
 	}
 
+	public void move() {
+		// TODO Auto-generated method stub
+		if(this.y + 55 < MainApp.getHeight()) {
+			velocity += 5;
+		}
+		else {
+			velocity = 0;
+			y = MainApp.getHeight()-55;
+		}
+		y += velocity;
+		super.setY(y);
+	}
+	
 }
