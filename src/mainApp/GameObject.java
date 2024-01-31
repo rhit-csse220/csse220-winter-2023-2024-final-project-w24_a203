@@ -31,6 +31,10 @@ public class GameObject {
 		this.y = y;
 	}
 	
+	public void move() {
+		this.x += 10;
+	}
+	
 	
 
 }
