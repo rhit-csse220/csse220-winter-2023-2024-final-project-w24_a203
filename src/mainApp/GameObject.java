@@ -27,14 +27,10 @@ public class GameObject {
 		g.fillRect(x, y, 20, 20);
 	}
 	
-	public void move() {
-		if(type.equals("hero")) {
-			this.move();
-		}
-	}
-
 	public void setY(int y) {
-		// TODO Auto-generated method stub
 		this.y = y;
 	}
+	
+	
+
 }

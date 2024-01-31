@@ -15,7 +15,7 @@ public class Hero extends GameObject{
 		super(x,y,color,type);
 		this.velocity = 0;
 		this.y = y;
-		this.keyboard = new HeroListener();
+		this.keyboard = keyboard;
 	}
 
 	public void move() {
