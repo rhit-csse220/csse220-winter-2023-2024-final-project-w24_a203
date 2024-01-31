@@ -11,37 +11,44 @@ import javax.swing.JComponent;
  * TODO: ADD JAVA DOC HERE
  */
 public class MainComponent extends JComponent{
-//	public static final int OBJECT_PLACEMENT_X = 1400;
-//	public static final int OBJECT_PLACEMENT_Y = 700;
 	
-	Hero hero = new Hero(600, 500, Color.BLACK, "Hero");
+	Hero hero = new Hero(600, 500, Color.BLACK, 'H');
 	private ArrayList<GameObject> listOfObjects;
 
 	public MainComponent(ArrayList<GameObject> listOfObjects) {
 		System.out.println("In MainComponent File");
 		this.listOfObjects = listOfObjects;
-			
-		
-		
 	}
 	
 	@Override
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D)g;
+		removeObjects();
 		for(GameObject object : listOfObjects) {
 			object.drawOn(g2);
 		}
 		hero.drawOn(g2);
 		
 		super.paintComponent(g);
-		
 	}
 
+	//TODO: Add java docs 
 	public void move() {
 		hero.move();
 		for(GameObject object : listOfObjects) {
 			object.move();
 		}
+	}
+	
+	//TODO: Add java docs 
+	public void removeObjects() {
+		ArrayList<GameObject> objectsToRemove = new ArrayList<GameObject>();
+		for(GameObject object : listOfObjects) {
+			if(object.getX() < 0) {
+				objectsToRemove.add(object);
+			}
+		}
+		listOfObjects.removeAll(objectsToRemove);
 	}
 	
 }

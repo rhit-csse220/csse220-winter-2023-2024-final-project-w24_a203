@@ -29,23 +29,19 @@ public class MainApp {
 	public static final int DELAY = 50;
 	public static final int SCREEN_HEIGHT = 800;
 	public static final int SCREEN_WIDTH = 1500;
-//	public static final int OBJECT_PLACEMENT_X = 1400;
-//	public static final int OBJECT_PLACEMENT_Y = 700;
 	public static final int ROWS = 4;
 	public static final Dimension FRAME_SIZE = new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT);
 	
 	private ArrayList<GameObject> listOfObjects;
 	
-	private void runApp() throws IOException, ObstacleNotFoundException {
-//		System.out.println("Write your cool arcade game here!");	
-		
+	private void runApp() throws IOException, ObstacleNotFoundException {		
 		JFrame frame = new JFrame();
 		frame.setSize(FRAME_SIZE);
 		frame.setTitle("JETPACK JOYRIDE!");
 		
 		listOfObjects = new ArrayList<GameObject>();
 		
-		Scanner s = new Scanner(System.in);
+		Scanner s = new Scanner(System.in);  //TODO: need to close scanner
 		String filename = null;
 		System.out.println("What file should I load?  (e.g. level1.txt)");
 		filename = s.nextLine();
@@ -59,7 +55,6 @@ public class MainApp {
 		Timer timer = new Timer(DELAY, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				mainComponent.update(null);
 				mainComponent.repaint();
 				mainComponent.move();
 				frame.repaint();
@@ -76,14 +71,6 @@ public class MainApp {
 	
 	private void readFile(String filename) throws FileNotFoundException, IOException, ObstacleNotFoundException {
 		
-//		Scanner s = new Scanner(System.in);
-////		filename = "level1.txt";
-//		filename = s.nextLine();
-//		
-//		
-//		System.out.println("App terminated");
-//		s.close();	
-		
 		File file = new File(filename);
 		
 		try {
@@ -99,18 +86,14 @@ public class MainApp {
 					int yVal = row *(SCREEN_HEIGHT/ROWS) + 30;
 	
 					if (line.charAt(i) == 'C') {
-						listOfObjects.add(new GameObject(xVal, yVal, Color.orange, "C"));
-						//System.out.println("Create Coin!");
+						listOfObjects.add(new GameObject(xVal, yVal, Color.orange, 'C'));
 					} else if (line.charAt(i) == 'B') {
-						//System.out.println("Create Regular Barrier!");
-						listOfObjects.add(new GameObject(xVal , yVal, Color.pink, "B"));
+						listOfObjects.add(new GameObject(xVal , yVal, Color.pink, 'B'));
 					} else if (line.charAt(i) == 'E') {
-						//System.out.println("Create Electric Barrier!");
-						listOfObjects.add(new GameObject(xVal , yVal, Color.green, "E"));
+						listOfObjects.add(new GameObject(xVal , yVal, Color.green, 'E'));
 					} else if (line.charAt(i) == 'M') {
-						//System.out.println("Create Missile!");
+						//TODO: Add the GameObject of type Missile
 					} else if (line.charAt(i) == '.') {
-						//System.out.println("KEEP GOING!");
 					} else {
 						throw new ObstacleNotFoundException(line.charAt(i));
 					}
@@ -124,7 +107,6 @@ public class MainApp {
 		} catch (FileNotFoundException e) {
 			System.err.println(filename + " WAS NOT FOUND...");
 			throw new IOException();
-//			e.printStackTrace();
 		}
 	}
 	
@@ -135,7 +117,6 @@ public class MainApp {
 	public static void main(String[] args) throws IOException, ObstacleNotFoundException {
 		MainApp mainApp = new MainApp();
 
-		
 		while (true) {
 			try {
 				mainApp.runApp();
@@ -148,8 +129,6 @@ public class MainApp {
 				System.err.println("File not found. Try again..");
 				
 			}
-	
-			
 		}
 		
 	} // main
