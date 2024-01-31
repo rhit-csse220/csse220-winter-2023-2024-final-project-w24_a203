@@ -32,7 +32,7 @@ public class GameObject {
 	}
 	
 	public void move() {
-		this.x += 10;
+		this.x -= 8;
 	}
 	
 	
