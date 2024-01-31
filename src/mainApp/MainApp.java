@@ -6,6 +6,8 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -49,8 +51,6 @@ public class MainApp {
 		
 		MainComponent mainComponent = new MainComponent(listOfObjects);
 		frame.add(mainComponent);
-		
-
 
 		Timer timer = new Timer(DELAY, new ActionListener() {
 			@Override
@@ -62,11 +62,14 @@ public class MainApp {
 		});
 		timer.start();
 		
+		//mainComponent.addKeyListener(new LevelListner());
+		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		frame.pack();
 		frame.setVisible(true);
 		
 	} // runApp
+	
 
 	
 	private void readFile(String filename) throws FileNotFoundException, IOException, ObstacleNotFoundException {
@@ -133,7 +136,41 @@ public class MainApp {
 		
 	} // main
 	
-	public static int getHeight() {
+	public static int getHeight() {  //TODO: we can't use static methods
 		return SCREEN_HEIGHT;
 	}
+	
+
+}
+
+class LevelListner implements KeyListener{
+	int level;
+	
+	public LevelListner(int level) {
+		this.level = level;
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+//		if(e.getKeyChar() == 'U')){
+//			if(level < 2) {
+//				return 
+//			}
+//		}
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }
