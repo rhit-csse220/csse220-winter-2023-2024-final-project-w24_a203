@@ -48,7 +48,7 @@ public class GameObject {
 	}
 	
 	public void move() {
-		this.x -= 8;
+		this.x -= 15;
 	}
 	
 	public int getX() {

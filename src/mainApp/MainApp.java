@@ -6,6 +6,8 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -41,16 +44,43 @@ public class MainApp {
 		frame.setSize(FRAME_SIZE);
 		frame.setTitle("JETPACK JOYRIDE!");
 		
-		listOfObjects = new ArrayList<GameObject>();
+//		listOfObjects = new ArrayList<GameObject>();
 		
 		Scanner s = new Scanner(System.in);  //TODO: need to close scanner
 		String filename = null;
 		System.out.println("What file should I load?  (e.g. level1.txt)");
 		filename = s.nextLine();
-		readFile(filename);
 		
-		MainComponent mainComponent = new MainComponent(listOfObjects);
+		
+		// TODO: figure out how to get level to show up on JFRAME screen when changing levels
+		// Comment out/delete this line when finished
+		frame.setTitle(filename);
+		
+		MainComponent mainComponent = readFile(filename);
+		mainComponent.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("keytyped");
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("keyr");
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+				System.out.println("keypresfhsdjka");
+			}
+		});
+		
 		frame.add(mainComponent);
+//		System.out.println("main component added to frame");
 
 		Timer timer = new Timer(DELAY, new ActionListener() {
 			@Override
@@ -62,7 +92,7 @@ public class MainApp {
 		});
 		timer.start();
 		
-		//mainComponent.addKeyListener(new LevelListner());
+
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		frame.pack();
@@ -72,7 +102,7 @@ public class MainApp {
 	
 
 	
-	private void readFile(String filename) throws FileNotFoundException, IOException, ObstacleNotFoundException {
+	public MainComponent readFile(String filename) throws FileNotFoundException, IOException, ObstacleNotFoundException {
 		
 		File file = new File(filename);
 		
@@ -80,6 +110,7 @@ public class MainApp {
 			
 			Scanner scanner = new Scanner(file);
 			int row = 0;
+			listOfObjects = new ArrayList<GameObject>();
 			while (scanner.hasNext()) {
 				String line = scanner.nextLine();				
 				
@@ -87,6 +118,7 @@ public class MainApp {
 					
 					int xVal =  i*(SCREEN_WIDTH/10);
 					int yVal = row *(SCREEN_HEIGHT/ROWS) + 30;
+					
 	
 					if (line.charAt(i) == 'C') {
 						listOfObjects.add(new GameObject(xVal, yVal, Color.orange, 'C'));
@@ -95,8 +127,9 @@ public class MainApp {
 					} else if (line.charAt(i) == 'E') {
 						listOfObjects.add(new GameObject(xVal , yVal, Color.green, 'E'));
 					} else if (line.charAt(i) == 'M') {
-						//TODO: Add the GameObject of type Missile
+//						listOfObjects.add(new GameObject(xVal , yVal, Color.red, 'M'));
 					} else if (line.charAt(i) == '.') {
+						
 					} else {
 						throw new ObstacleNotFoundException(line.charAt(i));
 					}
@@ -106,6 +139,8 @@ public class MainApp {
 			}
 			scanner.close();
 			System.out.println(filename + " was read");
+			MainComponent mainComponent = new MainComponent(listOfObjects);
+			return mainComponent;
 			
 		} catch (FileNotFoundException e) {
 			System.err.println(filename + " WAS NOT FOUND...");
@@ -143,32 +178,60 @@ public class MainApp {
 
 }
 
-class LevelListner implements KeyListener{
+class LevelListener implements FocusListener {
 	int level;
+	MainApp app;
+	String filename;
 	
-	public LevelListner(int level) {
-		this.level = level;
+	
+	public LevelListener(MainApp app) {
+//		this.level = level;
+		this.app = app;
 	}
 
-	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-//		if(e.getKeyChar() == 'U')){
-//			if(level < 2) {
-//				return 
-//			}
-//		}
+		System.out.println("keychar: " + e.getKeyChar());
+		if(e.getKeyChar() == 'u'){
+			filename = "level2.txt";
+			System.out.println("U pressed");
+			try {
+				System.out.println("keypress try/catch");
+				app.readFile(filename);
+				
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (ObstacleNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
+		}
+		
+	}
+
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("test keyrepsea");
+	}
+
+	@Override
+	public void focusGained(FocusEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
+	public void focusLost(FocusEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

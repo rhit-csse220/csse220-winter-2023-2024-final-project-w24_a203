@@ -28,6 +28,7 @@ public class MainComponent extends JComponent{
 			object.drawOn(g2);
 		}
 		hero.drawOn(g2);
+
 		
 		super.paintComponent(g);
 	}
