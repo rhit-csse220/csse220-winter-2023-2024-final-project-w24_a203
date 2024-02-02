@@ -34,6 +34,9 @@ public class GameObject {
 			g.fillOval(x, y, 40, 40);
 		}else if(type == 'H') {
 			g.fillRect(x, y, 30, 30);
+			this.setY(y);
+		} else if (type == 'M') {
+			g.fillRect(x, y, 35, 35);
 		}else if(type == 'B') {
 			g.rotate(angle, x, y);
 			g.fillRect(x, y, 20, 200);
@@ -47,7 +50,7 @@ public class GameObject {
 		this.y = y;
 	}
 	
-	public void move() {
+	public void move() { // move screen
 		this.x -= 15;
 	}
 	

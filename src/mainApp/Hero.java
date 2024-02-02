@@ -17,6 +17,7 @@ public class Hero extends GameObject{
 		this.y = y;
 		this.keyboard = keyboard; 
 	}
+	
 
 	public void move() {
 		// TODO Auto-generated method stub

@@ -14,7 +14,9 @@ public class HeroListener implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-
+		if (e.getKeyChar() == ' ') {
+			
+		}
 	}
 
 	@Override

@@ -56,11 +56,8 @@ public class MainApp {
 		filename = null;
 		System.out.println("What file should I load?  (e.g. level1.txt)");
 		filename = s.nextLine();
-
-		// TODO: figure out how to get level to show up on JFRAME screen when changing
-		// levels
-		// Comment out/delete this line when finished
-		frame.setTitle(filename);
+		
+		// TODO: figure out how to get level name to show up on JFrame as text, NOT TITLE
 
 		mainComponent = new MainComponent(readFile(filename));
 		mainComponent.addFocusListener(new FocusListener() {
@@ -119,7 +116,7 @@ public class MainApp {
 					} else if (line.charAt(i) == 'E') {
 						listOfObjects.add(new GameObject(xVal, yVal, Color.green, 'E'));
 					} else if (line.charAt(i) == 'M') {
-//						listOfObjects.add(new GameObject(xVal , yVal, Color.red, 'M'));
+						listOfObjects.add(new GameObject(xVal , yVal, Color.red, 'M'));
 					} else if (line.charAt(i) == '.') {
 
 					} else {
@@ -233,6 +230,7 @@ class LevelListener implements KeyListener {
 			// this.mainComponent = null;
 			filename = "level2.txt";
 			System.out.println("U pressed");
+			System.out.println("in level 2");
 			try {
 				//app.changeLevel(app.readFile(filename));
 				component.changeLevel(app.readFile(filename));
@@ -248,6 +246,24 @@ class LevelListener implements KeyListener {
 				e1.printStackTrace();
 			}
 
+		} else if (e.getKeyChar() == 'd') {
+			filename = "level1.txt";
+			System.out.println("D pressed");
+			System.out.println("in level 1");
+			try {
+				//app.changeLevel(app.readFile(filename));
+				component.changeLevel(app.readFile(filename));
+
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (ObstacleNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 
 	}
