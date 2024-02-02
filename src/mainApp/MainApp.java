@@ -44,7 +44,7 @@ public class MainApp {
 	String filename;
 	MainComponent mainComponent;
 	// private Timer timer;
-
+//TODO Clean the code!!!
 	private void runApp() throws IOException, ObstacleNotFoundException {
 		frame = new JFrame();
 		frame.setSize(FRAME_SIZE);
@@ -127,37 +127,6 @@ public class MainApp {
 
 			}
 			scanner.close();
-//			System.out.println(filename + " was read");
-//			MainComponent mainComponent = new MainComponent(listOfObjects);
-//			mainComponent.addFocusListener(new FocusListener() {
-//				
-//				@Override
-//				public void focusLost(FocusEvent e) {
-//					System.out.println("Focus lost");
-//				}
-//				
-//				@Override
-//				public void focusGained(FocusEvent e) {
-//					System.out.println("Focus gained");
-//				}
-//			});
-//			Timer timer = new Timer(DELAY, new ActionListener() {
-//				@Override
-//				public void actionPerformed(ActionEvent e) {
-//					System.out.println(filename);
-//					mainComponent.repaint();
-//					mainComponent.move();
-//					frame.repaint();
-//				}
-//			});
-//			mainComponent.requestFocusInWindow();
-//			mainComponent.addKeyListener(new LevelListener(this, mainComponent));
-//			frame.add(mainComponent);
-//			timer.start();
-//
-//			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-////			frame.pack();
-//			frame.setVisible(true);
 			return listOfObjects;
 
 		} catch (FileNotFoundException e) {

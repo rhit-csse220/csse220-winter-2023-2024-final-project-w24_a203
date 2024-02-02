@@ -7,6 +7,8 @@ import java.util.Random;
 /**
  * TODO: ADD JAVA DOC HERE
  */
+
+//TODO Create the missile, barrier and coin classes
 public class GameObject {
 	
 	private int x, y;
@@ -53,6 +55,9 @@ public class GameObject {
 	
 	public void move() { // move screen
 		this.x -= 15;
+	}
+	public int getY() {
+		return this.y;
 	}
 	
 	public int getX() {

@@ -12,26 +12,22 @@ public class HeroListener implements KeyListener{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		this.hero.flySet(true);
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
 		if (e.getKeyChar() == ' ') {
-			this.hero.flySet(true);
+			System.out.println("Fly");
+			this.hero.fly();
 		}
-//		this.hero.flySet(true);
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-//		if (e.getKeyChar() == ' ') {
-//			hero.flySet(false);
-//		}
-		this.hero.flySet(true);
+		if(e.getKeyChar() == ' ') {
+			this.hero.stopFlying();
+			System.out.println("Stop flying");
+		}
 	}
 
 }

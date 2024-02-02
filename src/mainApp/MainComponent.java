@@ -21,6 +21,7 @@ public class MainComponent extends JComponent{
 	public MainComponent(ArrayList<GameObject> listOfObjects) {
 		System.out.println("In MainComponent File");
 		this.listOfObjects = listOfObjects;
+		this.addKeyListener(heroListener);
 		
 	}
 	
@@ -62,7 +63,6 @@ public class MainComponent extends JComponent{
 	
 	@Override
 	public boolean isFocusable() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 	@Override
