@@ -14,12 +14,14 @@ import javax.swing.JComponent;
  */
 public class MainComponent extends JComponent{
 	
-	Hero hero = new Hero(600, 500, Color.BLACK, 'H');
+	Hero hero = new Hero(200, 500, Color.BLACK, 'H');
+	HeroListener heroListener = new HeroListener(hero);
 	private ArrayList<GameObject> listOfObjects;
 
 	public MainComponent(ArrayList<GameObject> listOfObjects) {
 		System.out.println("In MainComponent File");
 		this.listOfObjects = listOfObjects;
+		
 	}
 	
 	@Override

@@ -27,6 +27,7 @@ public class GameObject {
 		
 	}
 	
+	//TODO change type inheritance
 	public void drawOn(Graphics2D g) {
 		g = (Graphics2D)g.create();
 		g.setColor(this.color);

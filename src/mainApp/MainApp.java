@@ -38,7 +38,7 @@ public class MainApp {
 	public static final int SCREEN_WIDTH = 1000;// TODO change to 1500
 	public static final int ROWS = 4;
 	public static final Dimension FRAME_SIZE = new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT);
-
+	
 	private ArrayList<GameObject> listOfObjects;
 	private JFrame frame;
 	String filename;
@@ -266,7 +266,7 @@ class LevelListener implements KeyListener {
 			}
 		} else if (e.getKeyChar() == ' ') { // hero moves
 			// TODO: make hero move here
-			component.move();
+//			hero.move();
 		}
 
 	}
