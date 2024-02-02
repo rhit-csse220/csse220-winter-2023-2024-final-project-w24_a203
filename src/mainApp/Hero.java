@@ -92,35 +92,9 @@ public class Hero extends GameObject{
 	}
 	
 	
-}
-
-class KeyBoard implements KeyListener{
-
-	private Hero hero;
-	public KeyBoard(Hero hero) {
-		this.hero = hero;
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		if (e.getKeyChar() == ' ') {
-			hero.flySet(true);
-		}
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 }
+
+ 
 
 
