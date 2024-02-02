@@ -52,7 +52,7 @@ public class MainApp {
 
 //		listOfObjects = new ArrayList<GameObject>();
 
-		Scanner s = new Scanner(System.in); // TODO: need to close scanner
+		Scanner s = new Scanner(System.in); // DONE: need to close scanner
 		filename = null;
 		System.out.println("What file should I load?  (e.g. level1.txt)");
 		filename = s.nextLine();
@@ -85,7 +85,7 @@ public class MainApp {
 			}
 		});
 		timer.start();
-
+		s.close();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		frame.pack();
 		frame.setVisible(true);
@@ -264,6 +264,9 @@ class LevelListener implements KeyListener {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+		} else if (e.getKeyChar() == ' ') { // hero moves
+			// TODO: make hero move here
+			component.move();
 		}
 
 	}

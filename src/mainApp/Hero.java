@@ -19,17 +19,51 @@ public class Hero extends GameObject{
 	}
 	
 
-	public void move() {
+	public void move(boolean isKeyPressed) {
 		// TODO Auto-generated method stub
 		if(this.y + 55 < MainApp.getHeight()) {
 			velocity += 5;
 		}
-		else {
+		else if (isKeyPressed) {
+			velocity = 5;
+//			y = MainApp.getHeight()-55;
+		} else {
 			velocity = 0;
 			y = MainApp.getHeight()-55;
 		}
 		y += velocity;
 		super.setY(y);
 	}
+
+
+	public int getVelocity() {
+		return velocity;
+	}
+
+
+	public void setVelocity(int velocity) {
+		this.velocity = velocity;
+	}
+
+
+//	public int getX() {
+//		return x;
+//	}
+
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+
+//	public int getY() {
+//		return y;
+//	}
+
+
+	public void setY(int y) {
+		this.y = y;
+	}
+	
 	
 }
