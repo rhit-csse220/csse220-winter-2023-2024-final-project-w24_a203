@@ -45,6 +45,8 @@ public class MainApp {
 	MainComponent mainComponent;
 	// private Timer timer;
 //TODO Clean the code!!!
+	
+	//TODO check if the design does not violate 5 principles 
 	private void runApp() throws IOException, ObstacleNotFoundException {
 		frame = new JFrame();
 		frame.setSize(FRAME_SIZE);
