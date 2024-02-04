@@ -15,7 +15,6 @@ public class LevelListener implements KeyListener {
 		this.component = component;
 		this.app = app;
 	}
-
 	@Override
 	public void keyTyped(KeyEvent e) {
 

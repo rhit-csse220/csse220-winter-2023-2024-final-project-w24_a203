@@ -8,7 +8,7 @@ import java.util.Random;
  * TODO: ADD JAVA DOC HERE
  */
 
-//TODO Create the missile, barrier and coin classes
+//TODO Create the barrier and coin classes
 public class GameObject {
 	
 	private int x, y;

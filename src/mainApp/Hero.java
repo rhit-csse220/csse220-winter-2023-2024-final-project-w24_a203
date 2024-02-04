@@ -15,7 +15,6 @@ public class Hero extends GameObject {
 		super(x, y, color, type);
 		this.velocity = 0;
 	}
-	
 	public void move() {
 		if(super.getY() > MainApp.SCREEN_HEIGHT -80 && velocity > 0) {
 			velocity = 0;

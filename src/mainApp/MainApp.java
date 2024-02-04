@@ -40,7 +40,7 @@ public class MainApp {
 	public static final Dimension FRAME_SIZE = new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT);
 	
 	private ArrayList<GameObject> listOfObjects;
-	
+	//TODO add classes
 	//TODO check if the design does not violate 5 principles 
 	private void runApp() throws IOException, ObstacleNotFoundException {
 		JFrame frame = new JFrame();

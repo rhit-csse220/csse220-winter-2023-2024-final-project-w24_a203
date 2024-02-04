@@ -38,7 +38,7 @@ public class MainComponent extends JComponent{
 		super.paintComponent(g);
 	}
 
-	//TODO: Add java docs 
+	//TODO: Add java doc
 	public void move() {
 		hero.move();
 		for(GameObject object : listOfObjects) {

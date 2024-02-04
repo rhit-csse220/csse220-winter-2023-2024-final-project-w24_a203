@@ -9,7 +9,6 @@ public class HeroListener implements KeyListener{
 	public HeroListener(Hero hero) {
 		this.hero = hero;
 	}
-
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
