@@ -18,7 +18,6 @@ public class GameObject {
 	Random rand = new Random();
 
 	public GameObject(int x, int y, Color color, Character type) {
-		// TODO Auto-generated constructor stub
 		this.x = x;
 		this.y = y;
 		this.color = color;
@@ -30,7 +29,7 @@ public class GameObject {
 	}
 	
 	//TODO change type inheritance
-	public void drawOn(Graphics2D g) {
+	public Graphics2D drawOn(Graphics2D g) {
 		g = (Graphics2D)g.create();
 		g.setColor(this.color);
 		if(type == 'C') {
@@ -38,7 +37,7 @@ public class GameObject {
 		}else if(type == 'H') {
 			g.fillRect(x, y, 30, 30);
 			this.setY(y);
-		} else if (type == 'M') {
+		}else if (type == 'M') {
 			g.fillRect(x, y, 35, 35);
 		}else if(type == 'B') {
 			g.rotate(angle, x, y);
@@ -47,14 +46,19 @@ public class GameObject {
 			g.rotate(angle, x, y);
 			g.fillRect(x, y, 20, 200);
 		}
+		return g;
 	}
 	
 	public void setY(int y) {
 		this.y = y;
 	}
 	
+	public void setX(int x) {
+		this.x = x;
+	}
+	
 	public void move() { // move screen
-		this.x -= 15;
+		this.x -= 5;
 	}
 	public int getY() {
 		return this.y;

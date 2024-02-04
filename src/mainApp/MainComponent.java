@@ -65,10 +65,5 @@ public class MainComponent extends JComponent{
 	public boolean isFocusable() {
 		return true;
 	}
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return "position "+listOfObjects.get(0).getX();
-	}
 	
 }

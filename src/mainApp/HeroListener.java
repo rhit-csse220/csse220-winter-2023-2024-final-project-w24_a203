@@ -17,7 +17,6 @@ public class HeroListener implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyChar() == ' ') {
-			System.out.println("Fly");
 			this.hero.fly();
 		}
 	}
@@ -26,7 +25,6 @@ public class HeroListener implements KeyListener{
 	public void keyReleased(KeyEvent e) {
 		if(e.getKeyChar() == ' ') {
 			this.hero.stopFlying();
-			System.out.println("Stop flying");
 		}
 	}
 

@@ -35,45 +35,23 @@ public class MainApp {
 
 	public static final int DELAY = 50;
 	public static final int SCREEN_HEIGHT = 800;
-	public static final int SCREEN_WIDTH = 1000;// TODO change to 1500
+	public static final int SCREEN_WIDTH = 1000;
 	public static final int ROWS = 4;
 	public static final Dimension FRAME_SIZE = new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT);
 	
 	private ArrayList<GameObject> listOfObjects;
-	private JFrame frame;
-	String filename;
-	MainComponent mainComponent;
-	// private Timer timer;
-//TODO Clean the code!!!
 	
 	//TODO check if the design does not violate 5 principles 
 	private void runApp() throws IOException, ObstacleNotFoundException {
-		frame = new JFrame();
+		JFrame frame = new JFrame();
 		frame.setSize(FRAME_SIZE);
 		frame.setTitle("JETPACK JOYRIDE!");
 
-//		listOfObjects = new ArrayList<GameObject>();
-
-		Scanner s = new Scanner(System.in); // DONE: need to close scanner
-		filename = null;
+		Scanner s = new Scanner(System.in); 
 		System.out.println("What file should I load?  (e.g. level1.txt)");
-		filename = s.nextLine();
-		
-		// TODO: figure out how to get level name to show up on JFrame as text, NOT TITLE
+		String filename = s.nextLine();
 
-		mainComponent = new MainComponent(readFile(filename));
-		mainComponent.addFocusListener(new FocusListener() {
-
-			@Override
-			public void focusLost(FocusEvent e) {
-				System.out.println("Focus lost");
-			}
-
-			@Override
-			public void focusGained(FocusEvent e) {
-				System.out.println("Focus gained");
-			}
-		});
+		MainComponent mainComponent = new MainComponent(readFile(filename));
 		mainComponent.requestFocusInWindow();
 		mainComponent.addKeyListener(new LevelListener(mainComponent, filename, this));
 		frame.add(mainComponent);
@@ -89,7 +67,6 @@ public class MainApp {
 		timer.start();
 		s.close();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.pack();
 		frame.setVisible(true);
 	} // runApp
 
@@ -118,7 +95,7 @@ public class MainApp {
 					} else if (line.charAt(i) == 'E') {
 						listOfObjects.add(new GameObject(xVal, yVal, Color.green, 'E'));
 					} else if (line.charAt(i) == 'M') {
-						listOfObjects.add(new GameObject(xVal , yVal, Color.red, 'M'));
+						listOfObjects.add(new Missile(xVal , yVal, Color.red, 'M'));
 					} else if (line.charAt(i) == '.') {
 
 					} else {
@@ -160,92 +137,5 @@ public class MainApp {
 		}
 
 	} // main
-
-	public static int getHeight() { // TODO: we can't use static methods
-		return SCREEN_HEIGHT;
-	}
-
-//	public void changeLevel(ArrayList<GameObject> objects) {
-//		// mainComponent = new MainComponent(objects);
-//		filename = "level2.txt";
-//		level = 2;
-//	}
-
-}
-
-class LevelListener implements KeyListener {
-	int level;
-	MainApp app;
-	String filename;
-	MainComponent component;
-
-	// MainComponent mainComponent;
-	public LevelListener(MainComponent component, String filename, MainApp app) {
-//		this.level = level;
-		this.filename = filename;
-		this.component = component;
-		this.app = app;
-		// this.mainComponent = mainComponent;
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		System.out.println("Key was pressed");
-		if (e.getKeyChar() == 'u') {
-			// this.mainComponent = null;
-			filename = "level2.txt";
-			System.out.println("U pressed");
-			System.out.println("in level 2");
-			try {
-				//app.changeLevel(app.readFile(filename));
-				component.changeLevel(app.readFile(filename));
-
-			} catch (FileNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (ObstacleNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-
-		} else if (e.getKeyChar() == 'd') {
-			filename = "level1.txt";
-			System.out.println("D pressed");
-			System.out.println("in level 1");
-			try {
-				//app.changeLevel(app.readFile(filename));
-				component.changeLevel(app.readFile(filename));
-
-			} catch (FileNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (ObstacleNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		} else if (e.getKeyChar() == ' ') { // hero moves
-			// TODO: make hero move here
-//			hero.move();
-		}
-
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		// System.out.println("test keyrepsea");
-	}
 
 }
