@@ -39,6 +39,8 @@ public class GameObject {
 			this.setY(y);
 		}else if (type == 'M') {
 			g.fillRect(x, y, 35, 35);
+		}else if (type == 'T'){
+			g.fillRect(x, y, 35, 35);
 		}else if(type == 'B') {
 			g.rotate(angle, x, y);
 			g.fillRect(x, y, 20, 200);
@@ -47,6 +49,11 @@ public class GameObject {
 			g.fillRect(x, y, 20, 200);
 		}
 		return g;
+	}
+	
+	public Character getType () {
+		return type;
+		
 	}
 	
 	public void setY(int y) {

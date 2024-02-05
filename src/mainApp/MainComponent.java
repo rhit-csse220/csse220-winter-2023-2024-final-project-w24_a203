@@ -23,6 +23,12 @@ public class MainComponent extends JComponent{
 		this.listOfObjects = listOfObjects;
 		this.addKeyListener(heroListener);
 		
+		for (GameObject object: listOfObjects) { // for tracker missiles
+			if (object.getType() == 'T') {
+				object = new TrackerMissile(object.getX(), object.getY(), Color.magenta, 'T', hero);
+			}
+		}
+		
 	}
 	
 	@Override

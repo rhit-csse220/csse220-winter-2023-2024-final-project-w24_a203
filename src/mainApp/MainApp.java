@@ -96,6 +96,9 @@ public class MainApp {
 						listOfObjects.add(new GameObject(xVal, yVal, Color.green, 'E'));
 					} else if (line.charAt(i) == 'M') {
 						listOfObjects.add(new Missile(xVal , yVal, Color.red, 'M'));
+					} else if (line.charAt(i) == 'T') { // tracker missile
+						listOfObjects.add(new TrackerMissile(xVal , yVal, Color.magenta, 'T',
+								new GameObject(100,100, Color.cyan, 'C')));
 					} else if (line.charAt(i) == '.') {
 
 					} else {
@@ -112,7 +115,7 @@ public class MainApp {
 			System.err.println(filename + " WAS NOT FOUND...");
 			throw new IOException();
 		}
-	}
+	} // readFile
 
 	/**
 	 * ensures: runs the application

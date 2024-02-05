@@ -10,6 +10,7 @@ public class Missile extends GameObject{
 	@Override
 	public void move() {
 		super.setX(getX() - 15);
+		super.setY(getY() + 4);
 	}
 
 }
