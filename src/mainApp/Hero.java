@@ -19,7 +19,7 @@ public class Hero extends GameObject {
 	}
 	public void move() {
 		if(fly) {
-			velocity += -1;
+			velocity = -10;
 		}
 		else {
 			velocity += 1;
