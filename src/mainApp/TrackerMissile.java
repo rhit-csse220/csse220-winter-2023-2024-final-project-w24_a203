@@ -23,8 +23,14 @@ public class TrackerMissile extends Missile {
 //		super.move();
 //		System.out.println(follow.getY());
 		int heroY = follow.getY();
-			this.setY(follow.getY());
-			this.setX(getX() - 15);
+		if(heroY < this.getY()) {
+			this.setY(this.getY()-5);
+		}
+		else {
+			this.setY(this.getY()+5);
+		}
+
+		this.setX(getX() - 15);
 		
 	}
 	
