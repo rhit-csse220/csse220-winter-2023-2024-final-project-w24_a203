@@ -15,20 +15,15 @@ public class Barrier extends GameObject{
 	private int angle;
 	
 	/** TODO:
-	 * ensures: 
-	 * @param 
-	 * <br>requires: 
-	 * @param 
-	 * <br>requires: 
+	 * ensures: that the barriers show up on screen and at random angles
+	 * @param x for x position
+	 * @param y for y position
 	 */
 	public Barrier(int x, int y) {
 		super(x,y);
 		this.angle = (int) rand.nextDouble(-3.14/2, 3.14/2);
 	}
 	
-	/* TODO:
-	 *
-	 */
 	@Override
 	public Graphics2D drawOn(Graphics2D g) {
 		g = (Graphics2D)g.create();

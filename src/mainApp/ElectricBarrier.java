@@ -16,11 +16,9 @@ public class ElectricBarrier extends GameObject{
 	private int angle;
 	
 	/** TODO:
-	 * ensures: 
-	 * @param 
-	 * <br>requires: 
-	 * @param 
-	 * <br>requires: 
+	 * ensures: that the barriers show up on screen and at random angles
+	 * @param x for x position
+	 * @param y for y position
 	 */
 	public ElectricBarrier(int x, int y) {
 		// TODO Auto-generated constructor stub
@@ -28,9 +26,7 @@ public class ElectricBarrier extends GameObject{
 		this.angle = (int) rand.nextDouble(-3.14/2, 3.14/2);
 	}
 	
-	/** TODO:
-	 * 
-	 */
+
 	@Override
 	public Graphics2D drawOn(Graphics2D g) {
 		// TODO Auto-generated method stub
