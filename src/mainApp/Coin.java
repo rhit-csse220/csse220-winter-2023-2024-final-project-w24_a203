@@ -5,6 +5,12 @@ import java.awt.Graphics2D;
 
 public class Coin extends GameObject{
 
+	/**
+	 * DONE: ADD JAVA DOCS
+	 * Class: Coin
+	 * Purpose: Coins that hero can collect. Hero gets points for each
+	 * coin collected. After a coin is collected, it disappears from screen.
+	 */
 	public Coin(int x, int y) {
 		// TODO Auto-generated constructor stub
 		super(x,y);

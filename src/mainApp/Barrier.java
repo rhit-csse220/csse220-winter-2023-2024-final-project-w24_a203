@@ -3,19 +3,34 @@ package mainApp;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+/**
+ * DONE: ADD JAVA DOCS
+ * Class: Barrier
+ * Purpose: Non-electric barriers. Hero can bounce off of them - has
+ * no impact on hero health. Has different rotations to be an obstacle
+ * for the hero 
+ */
 public class Barrier extends GameObject{
 
 	private int angle;
 	
+	/** TODO:
+	 * ensures: 
+	 * @param 
+	 * <br>requires: 
+	 * @param 
+	 * <br>requires: 
+	 */
 	public Barrier(int x, int y) {
-		// TODO Auto-generated constructor stub
 		super(x,y);
 		this.angle = (int) rand.nextDouble(-3.14/2, 3.14/2);
 	}
 	
+	/* TODO:
+	 *
+	 */
 	@Override
 	public Graphics2D drawOn(Graphics2D g) {
-		// TODO Auto-generated method stub
 		g = (Graphics2D)g.create();
 		g.setColor(Color.pink);
 		g.rotate(angle, super.getX(), super.getY());
