@@ -9,52 +9,46 @@ import java.util.Random;
  */
 
 //TODO Create the barrier and coin classes
-public class GameObject {
+public abstract class GameObject {
 	
 	private int x, y;
 	double angle;
-	private Color color;
-	private Character type;
 	Random rand = new Random();
 
-	public GameObject(int x, int y, Color color, Character type) {
+	public GameObject(int x, int y) {
 		this.x = x;
 		this.y = y;
-		this.color = color;
-		this.type = type;
-		if(type == 'E' || type == 'B') {
-			this.angle = rand.nextDouble(-3.14/2, 3.14/2);
-		}
+//		if(type == 'E' || type == 'B') {
+//			this.angle = rand.nextDouble(-3.14/2, 3.14/2);
+//		}
 		
 	}
 	
+	abstract Graphics2D drawOn(Graphics2D g);
 	//TODO change type inheritance
-	public Graphics2D drawOn(Graphics2D g) {
-		g = (Graphics2D)g.create();
-		g.setColor(this.color);
-		if(type == 'C') {
-			g.fillOval(x, y, 40, 40);
-		}else if(type == 'H') {
-			g.fillRect(x, y, 30, 30);
-			this.setY(y);
-		}else if (type == 'M') {
-			g.fillRect(x, y, 35, 35);
-		}else if (type == 'T'){
-			g.fillRect(x, y, 35, 35);
-		}else if(type == 'B') {
-			g.rotate(angle, x, y);
-			g.fillRect(x, y, 20, 200);
-		}else if(type == 'E') {
-			g.rotate(angle, x, y);
-			g.fillRect(x, y, 20, 200);
-		}
-		return g;
-	}
-	
-	public Character getType () {
-		return type;
-		
-	}
+//	public Graphics2D drawOn(Graphics2D g) {
+//		g = (Graphics2D)g.create();
+//		g.setColor(this.color);
+//		if(type == 'C') {
+//			g.fillOval(x, y, 40, 40);
+//		}else if(type == 'H') {
+//			g.fillRect(x, y, 30, 30);
+//			this.setY(y);
+//		}else if (type == 'M') {
+//			g.fillRect(x, y, 35, 35);
+//		}else if (type == 'T'){
+//			g.fillRect(x, y, 35, 35);
+//		}else if(type == 'B') {
+//			g.rotate(angle, x, y);
+//			g.fillRect(x, y, 20, 200);
+//		}else if(type == 'E') {
+//			g.rotate(angle, x, y);
+//			g.fillRect(x, y, 20, 200);
+//		}
+//		return g;
+//	}
+//	
+
 	
 	public void setY(int y) {
 		this.y = y;

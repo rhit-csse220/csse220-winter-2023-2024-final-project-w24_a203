@@ -12,8 +12,8 @@ public class Hero extends GameObject {
 	private int velocity;
 	private boolean fly;
 	
-	public Hero(int x, int y, Color color, Character type) {
-		super(x, y, color, type);
+	public Hero(int x, int y) {
+		super(x, y);
 		this.velocity = 0;
 		this.fly = false;
 	}
@@ -52,5 +52,13 @@ public class Hero extends GameObject {
 //			velocity = 10;
 //		}
 		this.fly = false;
+	}
+	@Override
+	public Graphics2D drawOn(Graphics2D g) {
+		// TODO Auto-generated method stub
+		g = (Graphics2D)g.create();
+		g.setColor(Color.black);
+		g.fillRect(super.getX(), super.getY(), 30, 30);
+		return g;
 	}
 }

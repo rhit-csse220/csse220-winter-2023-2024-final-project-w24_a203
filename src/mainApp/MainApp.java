@@ -89,16 +89,18 @@ public class MainApp {
 					int yVal = row * (SCREEN_HEIGHT / ROWS) + 30;
 
 					if (line.charAt(i) == 'C') {
-						listOfObjects.add(new GameObject(xVal, yVal, Color.orange, 'C'));
+						listOfObjects.add(new Coin(xVal, yVal));
 					} else if (line.charAt(i) == 'B') {
-						listOfObjects.add(new GameObject(xVal, yVal, Color.pink, 'B'));
+						listOfObjects.add(new Barrier(xVal, yVal));
 					} else if (line.charAt(i) == 'E') {
-						listOfObjects.add(new GameObject(xVal, yVal, Color.green, 'E'));
+						listOfObjects.add(new ElectricBarrier(xVal, yVal));
 					} else if (line.charAt(i) == 'M') {
-						listOfObjects.add(new Missile(xVal , yVal, Color.red, 'M'));
-					} else if (line.charAt(i) == 'T') { // tracker missile
-						listOfObjects.add(new TrackerMissile(xVal , yVal, Color.magenta, 'T',
-								new GameObject(100,100, Color.cyan, 'C')));
+						listOfObjects.add(new Missile(xVal , yVal));
+					} 
+					else if (line.charAt(i) == 'T') { // tracker missile
+//						listOfObjects.add(new TrackerMissile(xVal , yVal, Color.magenta, 'T',
+//								new GameObject(100,100)));
+						listOfObjects.add(new Missile(xVal , yVal));
 					} else if (line.charAt(i) == '.') {
 
 					} else {

@@ -11,7 +11,7 @@ public class TrackerMissile extends Missile {
 	private GameObject follow;
 
 	public TrackerMissile(int x, int y, Color color, Character type, GameObject follow) {
-		super(x, y, color, type);
+		super(x, y);
 		this.follow = follow; // hero
 
 	}
