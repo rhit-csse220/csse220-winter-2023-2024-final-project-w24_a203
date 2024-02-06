@@ -21,7 +21,8 @@ public class TrackerMissile extends Missile {
 	public void move() {
 		// TODO Auto-generated method stub
 //		super.move();
-		System.out.println(follow.getY());
+//		System.out.println(follow.getY());
+		int heroY = follow.getY();
 			this.setY(follow.getY());
 			this.setX(getX() - 15);
 		
