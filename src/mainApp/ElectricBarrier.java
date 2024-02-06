@@ -5,7 +5,6 @@ import java.awt.Graphics2D;
 
 
 /**
- * DONE: ADD JAVA DOCS
  * Class: ElectricBarrier
  * Purpose: Electric barriers. Hero can not bounce off of them - hero
  * loses a life on each impact. Has different rotations to be an obstacle
@@ -14,12 +13,7 @@ import java.awt.Graphics2D;
 public class ElectricBarrier extends GameObject{
 
 	private int angle;
-	
-	/** TODO:
-	 * ensures: that the barriers show up on screen and at random angles
-	 * @param x for x position
-	 * @param y for y position
-	 */
+
 	public ElectricBarrier(int x, int y) {
 		// TODO Auto-generated constructor stub
 		super(x,y);
