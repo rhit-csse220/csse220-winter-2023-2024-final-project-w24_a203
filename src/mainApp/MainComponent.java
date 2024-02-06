@@ -14,14 +14,18 @@ import javax.swing.JComponent;
  */
 public class MainComponent extends JComponent{
 	
-	Hero hero = new Hero(200, 500);
-	HeroListener heroListener = new HeroListener(hero);
+//	Hero hero = new Hero(200, 500);
+	
 	private ArrayList<GameObject> listOfObjects;
+private Hero hero;
 
-	public MainComponent(ArrayList<GameObject> listOfObjects) {
+	public MainComponent(ArrayList<GameObject> listOfObjects, Hero hero) {
 		System.out.println("In MainComponent File");
 		this.listOfObjects = listOfObjects;
+		this.hero = hero;
+		HeroListener heroListener = new HeroListener(hero);
 		this.addKeyListener(heroListener);
+		
 		
 //		for (GameObject object: listOfObjects) { // for tracker missiles
 //			if (object.getType() == 'T') {

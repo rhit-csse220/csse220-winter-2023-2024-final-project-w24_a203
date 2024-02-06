@@ -38,6 +38,8 @@ public class MainApp {
 	public static final int SCREEN_WIDTH = 1000;
 	public static final int ROWS = 4;
 	public static final Dimension FRAME_SIZE = new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT);
+	Hero hero = new Hero(200, 500);
+//	HeroListener heroListener = new HeroListener(hero);
 	
 	private ArrayList<GameObject> listOfObjects;
 	//TODO add classes
@@ -51,7 +53,7 @@ public class MainApp {
 		System.out.println("What file should I load?  (e.g. level1.txt)");
 		String filename = s.nextLine();
 
-		MainComponent mainComponent = new MainComponent(readFile(filename));
+		MainComponent mainComponent = new MainComponent(readFile(filename),hero);
 		mainComponent.requestFocusInWindow();
 		mainComponent.addKeyListener(new LevelListener(mainComponent, filename, this));
 		frame.add(mainComponent);
@@ -100,7 +102,7 @@ public class MainApp {
 					else if (line.charAt(i) == 'T') { // tracker missile
 //						listOfObjects.add(new TrackerMissile(xVal , yVal, Color.magenta, 'T',
 //								new GameObject(100,100)));
-						listOfObjects.add(new Missile(xVal , yVal));
+						listOfObjects.add(new TrackerMissile(xVal , yVal, hero));
 					} else if (line.charAt(i) == '.') {
 
 					} else {

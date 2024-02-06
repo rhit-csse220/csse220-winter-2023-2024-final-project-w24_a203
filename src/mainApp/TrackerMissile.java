@@ -1,6 +1,7 @@
 package mainApp;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
 
 /**
  * TODO: Add java doc
@@ -10,9 +11,9 @@ public class TrackerMissile extends Missile {
 
 	private GameObject follow;
 
-	public TrackerMissile(int x, int y, Color color, Character type, GameObject follow) {
+	public TrackerMissile(int x, int y, Hero hero) {
 		super(x, y);
-		this.follow = follow; // hero
+		this.follow = hero; // hero
 
 	}
 	
@@ -20,9 +21,18 @@ public class TrackerMissile extends Missile {
 	public void move() {
 		// TODO Auto-generated method stub
 //		super.move();
+		System.out.println(follow.getY());
 			this.setY(follow.getY());
-			this.setX(getX() - 10);
+			this.setX(getX() - 15);
 		
 	}
-
+	
+	@Override
+	public Graphics2D drawOn(Graphics2D g) {
+		// TODO Auto-generated method stub
+		g = (Graphics2D)g.create();
+		g.setColor(Color.MAGENTA);
+		g.fillRect(super.getX(), super.getY(), 35, 35);
+		return g;
+	}
 }
