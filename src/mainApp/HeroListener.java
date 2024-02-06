@@ -15,14 +15,14 @@ public class HeroListener implements KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyChar() == ' ') {
+		if (e.getKeyChar() == ' ' || e.getKeyCode() == 38) {
 			this.hero.fly();
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if(e.getKeyChar() == ' ') {
+		if(e.getKeyChar() == ' ' || e.getKeyCode() == 38) {
 			this.hero.stopFlying();
 		}
 	}
