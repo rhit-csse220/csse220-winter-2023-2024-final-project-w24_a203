@@ -23,6 +23,7 @@ public abstract class GameObject {
 //		}
 		
 	}
+	abstract void collidedWithHero();
 	
 	abstract Graphics2D drawOn(Graphics2D g);
 	//TODO change type inheritance

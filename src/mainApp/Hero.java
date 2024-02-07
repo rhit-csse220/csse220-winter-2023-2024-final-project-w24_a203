@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 /**
  * TODO: ADD JAVA DOC HERE
@@ -53,6 +54,15 @@ public class Hero extends GameObject {
 //		}
 		this.fly = false;
 	}
+	
+	public void collideWith(ArrayList<GameObject> objects) {
+		for(GameObject object : objects)
+		if(Math.abs(this.getX() - object.getX()) < 30 && Math.abs(this.getY() - object.getY()) < 30) {
+			//object.collidedWithHero();
+			System.out.println("Collided with " + object.getClass());
+		}
+	}
+	
 	@Override
 	public Graphics2D drawOn(Graphics2D g) {
 		// TODO Auto-generated method stub
@@ -60,5 +70,10 @@ public class Hero extends GameObject {
 		g.setColor(Color.black);
 		g.fillRect(super.getX(), super.getY(), 30, 30);
 		return g;
+	}
+	@Override
+	void collidedWithHero() {
+		// TODO Auto-generated method stub
+		
 	}
 }

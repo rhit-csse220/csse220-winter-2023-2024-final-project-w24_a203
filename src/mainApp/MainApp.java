@@ -81,7 +81,12 @@ public class MainApp {
 
 			Scanner scanner = new Scanner(file);
 			int row = 0;
+			//Array list = new [5]
 			listOfObjects = new ArrayList<GameObject>();
+//			ArrayList<Coin> listOfCoins = new ArrayList<Coin>();
+//			ArrayList<ElectricBarrier> listOfElectricBarriers = new ArrayList<ElectricBarrier>();
+//			ArrayList<Barrier> listOfBarriers = new ArrayList<Barrier>();
+//			ArrayList<Missile> listOfMissles = new ArrayList<Missile>();
 			while (scanner.hasNext()) {
 				String line = scanner.nextLine();
 
@@ -91,7 +96,9 @@ public class MainApp {
 					int yVal = row * (SCREEN_HEIGHT / ROWS) + 30;
 
 					if (line.charAt(i) == 'C') {
-						listOfObjects.add(new Coin(xVal, yVal));
+						Coin coin = new Coin(xVal, yVal);
+						listOfObjects.add(coin);
+						//listOfCoins.add(coin);
 					} else if (line.charAt(i) == 'B') {
 						listOfObjects.add(new Barrier(xVal, yVal));
 					} else if (line.charAt(i) == 'E') {

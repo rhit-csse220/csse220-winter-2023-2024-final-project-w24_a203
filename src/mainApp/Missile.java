@@ -22,4 +22,9 @@ public class Missile extends GameObject{
 		g.fillRect(super.getX(), super.getY(), 35, 35);
 		return g;
 	}
+	@Override
+	void collidedWithHero() {
+		// TODO Auto-generated method stub
+		
+	}
 }

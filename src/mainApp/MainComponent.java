@@ -43,6 +43,7 @@ private Hero hero;
 			object.drawOn(g2);
 		}
 		hero.drawOn(g2);
+		hero.collideWith(listOfObjects);
 
 		
 		super.paintComponent(g);

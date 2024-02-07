@@ -11,6 +11,7 @@ public class Coin extends GameObject{
 	 * Purpose: Coins that hero can collect. Hero gets points for each
 	 * coin collected. After a coin is collected, it disappears from screen.
 	 */
+	
 	public Coin(int x, int y) {
 		// TODO Auto-generated constructor stub
 		super(x,y);
@@ -23,6 +24,17 @@ public class Coin extends GameObject{
 		g.setColor(Color.orange);
 		g.fillOval(super.getX(), super.getY(), 40, 40);
 		return g;
+	}
+	
+	@Override
+	void collidedWithHero() {
+		System.out.println("Collided with teh coin");
+		this.removeCoin();
+		
+	}
+	
+	public void removeCoin() {
+		
 	}
 
 }

@@ -30,4 +30,11 @@ public class ElectricBarrier extends GameObject{
 		g.fillRect(super.getX(), super.getY(), 20, 200);
 		return g;
 	}
+
+
+	@Override
+	void collidedWithHero() {
+		// TODO Auto-generated method stub
+		
+	}
 }

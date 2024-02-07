@@ -26,4 +26,11 @@ public class Barrier extends GameObject{
 		g.fillRect(super.getX(), super.getY(), 20, 200);
 		return g;
 	}
+
+	@Override
+	void collidedWithHero() {
+		// TODO Auto-generated method stub
+		// only checks if the hero collides with the barrier(the y will have a bigger range)
+		
+	}
 }
