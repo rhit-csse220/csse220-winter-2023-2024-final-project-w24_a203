@@ -3,6 +3,13 @@ package mainApp;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/*
+ * TODO: ADD JAVA DOCS
+ * Class: HeroListener
+ * Purpose: Connects the Hero character to the keyboard.
+ * The hero can move up with the space bar or the up
+ * arrow key.
+ */
 public class HeroListener implements KeyListener{
 
 	private Hero hero;

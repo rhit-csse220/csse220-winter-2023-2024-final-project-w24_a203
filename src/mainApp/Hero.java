@@ -8,6 +8,11 @@ import java.util.ArrayList;
 
 /**
  * TODO: ADD JAVA DOC HERE
+ * Class: Hero
+ * Purpose: Hero that the player controls. Can interact
+ * with each game object - some causes the hero to die (missiles 
+ * & electric barriers), others give the hero points (coins),
+ * others do nothing (regular barriers.
  */
 public class Hero extends GameObject {
 	private int velocity;

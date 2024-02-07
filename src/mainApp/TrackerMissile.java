@@ -3,9 +3,12 @@ package mainApp;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-/**
- * TODO: Add java doc
- * want to track the hero's movement for sometime
+/*
+ * TODO: ADD JAVA DOCS
+ * Class: TrackerMissile
+ * Purpose: A tracking missile that the hero needs to avoid.
+ * If the hero is hit, they lose a life. This missile tracks the hero's 
+ * movement on screen and add a challenge for the player.
  */
 public class TrackerMissile extends Missile {
 

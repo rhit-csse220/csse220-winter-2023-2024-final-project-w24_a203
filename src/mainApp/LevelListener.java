@@ -5,6 +5,12 @@ import java.awt.event.KeyListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+/*
+ * TODO: ADD JAVA DOC
+ * Class: LevelListener
+ * Purpose: allows the player to move between levels using the 'U' 
+ * and 'D' keys
+ */
 public class LevelListener implements KeyListener {
 	MainApp app;
 	String filename;

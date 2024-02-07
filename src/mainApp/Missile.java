@@ -3,6 +3,12 @@ package mainApp;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+/*
+ * TODO: ADD JAVA DOCS
+ * Class: Missile
+ * Purpose: A regular missile that the hero needs to avoid.
+ * If the hero is hit, they lose a life.
+ */
 public class Missile extends GameObject{
 
 	public Missile(int x, int y) {

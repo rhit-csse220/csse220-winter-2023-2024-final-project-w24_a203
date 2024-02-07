@@ -6,6 +6,8 @@ import java.util.Random;
 
 /**
  * TODO: ADD JAVA DOC HERE
+ * Class: GameObject
+ * Purpose: Abstract class that ___ each game object (coins, barriers, missiles)
  */
 
 //TODO Create the barrier and coin classes
