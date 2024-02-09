@@ -15,7 +15,6 @@ public class ElectricBarrier extends GameObject{
 	private int angle;
 
 	public ElectricBarrier(int x, int y) {
-		// TODO Auto-generated constructor stub
 		super(x,y);
 		this.angle = (int) rand.nextDouble(-3.14/2, 3.14/2);
 	}
@@ -23,7 +22,6 @@ public class ElectricBarrier extends GameObject{
 
 	@Override
 	public Graphics2D drawOn(Graphics2D g) {
-		// TODO Auto-generated method stub
 		g = (Graphics2D)g.create();
 		g.setColor(Color.green);
 		g.rotate(angle, super.getX(), super.getY());
@@ -33,8 +31,12 @@ public class ElectricBarrier extends GameObject{
 
 
 	@Override
-	void collidedWithHero() {
-		// TODO Auto-generated method stub
-		
+	public boolean collidedWithHero(Hero hero) {
+		if (Math.abs(hero.getX() - this.getX()) < 20 && Math.abs(hero.getY() - this.getY()) < 200) {
+			System.out.println("Colided with barrier");
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

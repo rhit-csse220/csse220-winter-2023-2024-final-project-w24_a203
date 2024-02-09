@@ -1,80 +1,124 @@
 package mainApp;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 
 import javax.swing.JComponent;
+import javax.swing.JTextField;
 
 /**
  * TODO: ADD JAVA DOC HERE
  */
-public class MainComponent extends JComponent{
-	
-//	Hero hero = new Hero(200, 500);
-	
-	private ArrayList<GameObject> listOfObjects;
-private Hero hero;
+public class MainComponent extends JComponent {
 
+//	Hero hero = new Hero(200, 500);
+	private ArrayList<Missile> missles = new ArrayList<Missile>();
+	private ArrayList<Barrier> barriers = new ArrayList<Barrier>();
+	private ArrayList<ElectricBarrier> electricBarriers = new ArrayList<ElectricBarrier>();
+	private ArrayList<Coin> coins = new ArrayList<Coin>();
+
+	private ArrayList<GameObject> listOfObjects;
+	private Hero hero;
+	private int points = 0;
+	private int lives = 3;
+	
 	public MainComponent(ArrayList<GameObject> listOfObjects, Hero hero) {
 		System.out.println("In MainComponent File");
 		this.listOfObjects = listOfObjects;
+		this.createArrayListsOdObjects();
 		this.hero = hero;
 		HeroListener heroListener = new HeroListener(hero);
 		this.addKeyListener(heroListener);
-		
-		
-//		for (GameObject object: listOfObjects) { // for tracker missiles
-//			if (object.getType() == 'T') {
-//				object = new TrackerMissile(object.getX(), object.getY(), Color.magenta, 'T', hero);
-//			}
-//		}
-		
 	}
-	
+
 	@Override
 	protected void paintComponent(Graphics g) {
-		Graphics2D g2 = (Graphics2D)g;
+		Graphics2D g2 = (Graphics2D) g;
 		removeObjects();
-		for(GameObject object : listOfObjects) {
-			object.drawOn(g2);
+
+		for (Missile missle : missles) {
+			missle.drawOn(g2);
+			if( missle.ifCollidedWithHero()==false && missle.collidedWithHero(hero)) {
+				lives -= 1;
+			}
+		}
+		for (Barrier barrier : barriers) {
+			barrier.drawOn(g2);
+			barrier.collidedWithHero(hero);
+		}
+		for (ElectricBarrier ebarrier : electricBarriers) {
+			ebarrier.drawOn(g2);
+			ebarrier.collidedWithHero(hero);
+		}
+		for (Coin coin : coins) {
+			coin.drawOn(g2);
+			if (coin.collidedWithHero(hero)) {
+				points += 1;
+			}
+
 		}
 		hero.drawOn(g2);
-		hero.collideWith(listOfObjects);
-
-		
+		g2.drawString("Points: " + points, 10, 20);
+		g2.drawString("Lives : " + lives, 900, 20);
 		super.paintComponent(g);
 	}
 
-	//TODO: Add java doc
+	// TODO: Add java doc
 	public void move() {
 		hero.move();
-		for(GameObject object : listOfObjects) {
+		for (GameObject object : listOfObjects) {
 			object.move();
 		}
 	}
-	
-	//TODO: Add java docs 
+
+	// TODO: Add java docs
 	public void removeObjects() {
 		ArrayList<GameObject> objectsToRemove = new ArrayList<GameObject>();
-		for(GameObject object : listOfObjects) {
-			if(object.getX() < 0) {
+		for (GameObject object : listOfObjects) {
+			if (object.getX() < 0) {
 				objectsToRemove.add(object);
 			}
 		}
 		listOfObjects.removeAll(objectsToRemove);
+		missles.removeAll(objectsToRemove);
+		coins.removeAll(objectsToRemove);
+		barriers.removeAll(objectsToRemove);
+		electricBarriers.removeAll(objectsToRemove);
 	}
-	
+
 	public void changeLevel(ArrayList<GameObject> objects) {
 		listOfObjects = objects;
+		this.createArrayListsOdObjects();
 	}
-	
+
+	public void createArrayListsOdObjects() {
+		barriers.removeAll(barriers);
+		electricBarriers.removeAll(electricBarriers);
+		coins.removeAll(coins);
+		missles.removeAll(missles);
+		for (GameObject object : listOfObjects) {
+			if (object instanceof Barrier) {
+				barriers.add((Barrier) object);
+			} else if (object instanceof ElectricBarrier) {
+				electricBarriers.add((ElectricBarrier) object);
+			} else if (object instanceof Coin) {
+				coins.add((Coin) object);
+			} else if (object instanceof Missile) {
+				missles.add((Missile) object);
+			}
+		}
+	}
+
 	@Override
 	public boolean isFocusable() {
 		return true;
 	}
-	
+
 }

@@ -20,6 +20,7 @@ import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.Timer;
 
 /**
@@ -39,7 +40,6 @@ public class MainApp {
 	public static final int ROWS = 4;
 	public static final Dimension FRAME_SIZE = new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT);
 	Hero hero = new Hero(200, 500);
-//	HeroListener heroListener = new HeroListener(hero);
 	
 	private ArrayList<GameObject> listOfObjects;
 	//TODO add classes
@@ -63,6 +63,7 @@ public class MainApp {
 			public void actionPerformed(ActionEvent e) {
 				mainComponent.repaint();
 				mainComponent.move();
+				//mainComponent.print(null);
 				frame.repaint();
 			}
 		});
@@ -81,12 +82,7 @@ public class MainApp {
 
 			Scanner scanner = new Scanner(file);
 			int row = 0;
-			//Array list = new [5]
 			listOfObjects = new ArrayList<GameObject>();
-//			ArrayList<Coin> listOfCoins = new ArrayList<Coin>();
-//			ArrayList<ElectricBarrier> listOfElectricBarriers = new ArrayList<ElectricBarrier>();
-//			ArrayList<Barrier> listOfBarriers = new ArrayList<Barrier>();
-//			ArrayList<Missile> listOfMissles = new ArrayList<Missile>();
 			while (scanner.hasNext()) {
 				String line = scanner.nextLine();
 
@@ -98,7 +94,6 @@ public class MainApp {
 					if (line.charAt(i) == 'C') {
 						Coin coin = new Coin(xVal, yVal);
 						listOfObjects.add(coin);
-						//listOfCoins.add(coin);
 					} else if (line.charAt(i) == 'B') {
 						listOfObjects.add(new Barrier(xVal, yVal));
 					} else if (line.charAt(i) == 'E') {
@@ -106,9 +101,7 @@ public class MainApp {
 					} else if (line.charAt(i) == 'M') {
 						listOfObjects.add(new Missile(xVal , yVal));
 					} 
-					else if (line.charAt(i) == 'T') { // tracker missile
-//						listOfObjects.add(new TrackerMissile(xVal , yVal, Color.magenta, 'T',
-//								new GameObject(100,100)));
+					else if (line.charAt(i) == 'T') {
 						listOfObjects.add(new TrackerMissile(xVal , yVal, hero));
 					} else if (line.charAt(i) == '.') {
 
