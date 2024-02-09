@@ -26,7 +26,7 @@ public class Coin extends GameObject {
 	@Override
 	public boolean collidedWithHero(Hero hero) {
 		if(super.collidedWithHero(hero)) {
-			System.out.println("Collided with coin");
+			//System.out.println("Collided with coin");
 			setX(-10); //removes the coin from JFrame
 			return true;
 		}else {

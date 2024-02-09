@@ -28,11 +28,12 @@ public class MainComponent extends JComponent {
 	private Hero hero;
 	private int points = 0;
 	private int lives = 3;
+	private int previousLives = 3;
 	
 	public MainComponent(ArrayList<GameObject> listOfObjects, Hero hero) {
 		System.out.println("In MainComponent File");
 		this.listOfObjects = listOfObjects;
-		this.createArrayListsOdObjects();
+		this.createArrayListsOfObjects();
 		this.hero = hero;
 		HeroListener heroListener = new HeroListener(hero);
 		this.addKeyListener(heroListener);
@@ -47,8 +48,14 @@ public class MainComponent extends JComponent {
 			missle.drawOn(g2);
 			if( missle.ifCollidedWithHero()==false && missle.collidedWithHero(hero)) {
 				lives -= 1;
+				break;
 			}
 		}
+//		if(previousLives != lives) {
+//			previousLives = lives;
+//			System.out.println("Restart the level");
+//			this.createArrayListsOfObjects();
+//		}
 		for (Barrier barrier : barriers) {
 			barrier.drawOn(g2);
 			barrier.collidedWithHero(hero);
@@ -61,6 +68,7 @@ public class MainComponent extends JComponent {
 			coin.drawOn(g2);
 			if (coin.collidedWithHero(hero)) {
 				points += 1;
+				break;
 			}
 
 		}
@@ -86,7 +94,7 @@ public class MainComponent extends JComponent {
 				objectsToRemove.add(object);
 			}
 		}
-		listOfObjects.removeAll(objectsToRemove);
+		//listOfObjects.removeAll(objectsToRemove);
 		missles.removeAll(objectsToRemove);
 		coins.removeAll(objectsToRemove);
 		barriers.removeAll(objectsToRemove);
@@ -95,10 +103,10 @@ public class MainComponent extends JComponent {
 
 	public void changeLevel(ArrayList<GameObject> objects) {
 		listOfObjects = objects;
-		this.createArrayListsOdObjects();
+		this.createArrayListsOfObjects();
 	}
 
-	public void createArrayListsOdObjects() {
+	public void createArrayListsOfObjects() {
 		barriers.removeAll(barriers);
 		electricBarriers.removeAll(electricBarriers);
 		coins.removeAll(coins);
@@ -119,6 +127,15 @@ public class MainComponent extends JComponent {
 	@Override
 	public boolean isFocusable() {
 		return true;
+	}
+	
+	public boolean collideWithMissile() {
+		if(previousLives != lives) {
+			previousLives = lives;
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 }

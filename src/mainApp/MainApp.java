@@ -63,6 +63,20 @@ public class MainApp {
 			public void actionPerformed(ActionEvent e) {
 				mainComponent.repaint();
 				mainComponent.move();
+				if(mainComponent.collideWithMissile()) {
+					try {
+						mainComponent.changeLevel(readFile(filename));
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (ObstacleNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
 				//mainComponent.print(null);
 				frame.repaint();
 			}

@@ -29,7 +29,7 @@ public class Barrier extends GameObject {
 	@Override
 	public boolean collidedWithHero(Hero hero) {
 		if (Math.abs(hero.getX() - this.getX()) < 20 && Math.abs(hero.getY() - this.getY()) < 200) {
-			System.out.println("Colided with barrier");
+			//System.out.println("Colided with barrier");
 			return true;
 		} else {
 			return false;

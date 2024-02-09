@@ -31,7 +31,6 @@ public class Missile extends GameObject{
 	@Override
 	public boolean collidedWithHero(Hero hero) {
 		if(super.collidedWithHero(hero)) {
-			System.out.println("Collided with missle");
 			collidedWithHero = true;
 			return true;
 		}else {
