@@ -2,6 +2,12 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Shape;
+import java.awt.geom.Area;
+import java.awt.geom.Rectangle2D;
+import java.awt.geom.Line2D;
+
+import javax.sound.sampled.Line;
 
 
 /**
@@ -32,11 +38,19 @@ public class ElectricBarrier extends GameObject{
 
 	@Override
 	public boolean collidedWithHero(Hero hero) {
-		if (Math.abs(hero.getX() - this.getX()) < 20 && Math.abs(hero.getY() - this.getY()) < 200) {
-			//System.out.println("Colided with barrier");
-			return true;
-		} else {
-			return false;
-		}
+//		if (Math.abs(hero.getX() - this.getX()) < 20 && Math.abs(hero.getY() - this.getY()) < 200) {
+//			//System.out.println("Colided with barrier");
+//			return true;
+//		} else {
+//			return false;
+//		}
+//		Graphics2D g = (Graphics2D)g.create();
+//		Line2D line = new Line2D.Double(super.getX(), super.getY(),Math.sin(angle)*200,Math.cos(angle)*200);
+//		Area barrier = new Area
+		return getBoundingBox().intersects(hero.getBoundingBox());
+	}
+	public Line2D.Double getBoundingBox() {
+//		return new Rectangle2D.Double(super.getX(), super.getY(), 20, 200 );
+		return new Line2D.Double(super.getX(), super.getY(),Math.sin(-angle)*200+super.getX(),Math.cos(-angle)*200+super.getY());
 	}
 }

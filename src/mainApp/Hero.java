@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
 /**
@@ -17,11 +18,13 @@ import java.util.ArrayList;
 public class Hero extends GameObject {
 	private int velocity;
 	private boolean fly;
+	private boolean push;
 	
 	public Hero(int x, int y) {
 		super(x, y);
 		this.velocity = 0;
 		this.fly = false;
+		this.push= false;
 	}
 	public void move() {
 		if(fly) {
@@ -37,6 +40,9 @@ public class Hero extends GameObject {
 		if(super.getY() < 0 && velocity < 0) {
 			velocity = 0;
 			super.setY(0);
+		}
+		if(super.getX()<200) {
+			super.setX(super.getX()+1);
 		}
 		super.setY(getY() + velocity);
 	}
@@ -67,5 +73,12 @@ public class Hero extends GameObject {
 		g.setColor(Color.black);
 		g.fillRect(super.getX(), super.getY(), 30, 30);
 		return g;
+	}
+	public Rectangle2D.Double getBoundingBox() {
+		return new Rectangle2D.Double(super.getX(), super.getY(), 30, 30 );
+	}
+	public void pushBack() {
+		// TODO Auto-generated method stub
+		super.setX(super.getX()-6);
 	}
 }

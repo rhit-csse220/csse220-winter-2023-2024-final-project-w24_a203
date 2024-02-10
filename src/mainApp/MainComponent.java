@@ -43,7 +43,7 @@ public class MainComponent extends JComponent {
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		removeObjects();
-
+		if(lives>0) {
 		for (Missile missle : missles) {
 			missle.drawOn(g2);
 			if( missle.ifCollidedWithHero()==false && missle.collidedWithHero(hero)) {
@@ -58,11 +58,16 @@ public class MainComponent extends JComponent {
 //		}
 		for (Barrier barrier : barriers) {
 			barrier.drawOn(g2);
-			barrier.collidedWithHero(hero);
+			if(barrier.collidedWithHero(hero)) {
+				hero.pushBack();
+			}
+		
 		}
 		for (ElectricBarrier ebarrier : electricBarriers) {
 			ebarrier.drawOn(g2);
-			ebarrier.collidedWithHero(hero);
+			if(ebarrier.collidedWithHero(hero)) {
+				lives -= 1;
+			}
 		}
 		for (Coin coin : coins) {
 			coin.drawOn(g2);
@@ -76,6 +81,12 @@ public class MainComponent extends JComponent {
 		g2.drawString("Points: " + points, 10, 20);
 		g2.drawString("Lives : " + lives, 900, 20);
 		super.paintComponent(g);
+		}
+		else {
+//			g.setColor(Color.);
+//			g.drawIm(0, 0, 1000, 800);
+			g.drawString("GAME OVER", 200, 200);
+		}
 	}
 
 	// TODO: Add java doc
