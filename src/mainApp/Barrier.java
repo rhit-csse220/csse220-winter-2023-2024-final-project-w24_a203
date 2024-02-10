@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 
-import game.GameObject;
+//import game.GameObject;
 
 /**
  * Class: Barrier Purpose: Non-electric barriers. Hero can bounce off of them -
@@ -44,10 +44,6 @@ public class Barrier extends GameObject {
 //		}
 
 			return getBoundingBox().intersects(hero.getBoundingBox());
-//			if(bool) {
-//				System.out.println("collide");
-//			}
-//			return bool;
 		}
 	public Line2D.Double getBoundingBox() {
 //		return new Rectangle2D.Double(super.getX(), super.getY(), 20, 200 );
