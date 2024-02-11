@@ -16,35 +16,42 @@ import java.util.ArrayList;
  * others do nothing (regular barriers.
  */
 public class Hero extends GameObject {
-	private int velocity;
+	private int velocityY;
+	private int velocityX;
 	private boolean fly;
 	private boolean push;
 	
 	public Hero(int x, int y) {
 		super(x, y);
-		this.velocity = 0;
+		this.velocityY = 0;
+		this.velocityX = 0;
 		this.fly = false;
 		this.push= false;
 	}
 	public void move() {
 		if(fly) {
-			velocity = -10;
+			velocityY = -10;
 		}
 		else {
-			velocity += 1;
+			velocityY += 1;
 		}
-		if(super.getY() > MainApp.SCREEN_HEIGHT - 70 && velocity > 0) {
-			velocity = 0;
+		if(super.getY() > MainApp.SCREEN_HEIGHT - 70 && velocityY > 0) {
+			velocityY = 0;
 			super.setY(MainApp.SCREEN_HEIGHT - 70);
 		}
-		if(super.getY() < 0 && velocity < 0) {
-			velocity = 0;
+		if(super.getY() < 0 && velocityY < 0) {
+			velocityY = 0;
 			super.setY(0);
 		}
-		if(super.getX()<200) {
-			super.setX(super.getX()+1);
+		if(super.getX()<250) {
+			this.velocityX+=1;
 		}
-		super.setY(getY() + velocity);
+		if(super.getX()>250){
+			this.velocityX =0;
+			super.setX(250);
+		}
+		super.setX(super.getX()+velocityX);
+		super.setY(getY() + velocityY);
 	}
 
 	public void fly() {
@@ -79,6 +86,7 @@ public class Hero extends GameObject {
 	}
 	public void pushBack() {
 		// TODO Auto-generated method stub
-		super.setX(super.getX()-6);
+//		super.setX(super.getX()-6);
+		this.velocityX = -20;
 	}
 }

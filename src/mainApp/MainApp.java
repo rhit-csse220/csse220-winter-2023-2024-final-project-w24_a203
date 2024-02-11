@@ -39,7 +39,7 @@ public class MainApp {
 	public static final int SCREEN_WIDTH = 1000;
 	public static final int ROWS = 4;
 	public static final Dimension FRAME_SIZE = new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT);
-	Hero hero = new Hero(200, 500);
+	Hero hero = new Hero(250, 500);
 	
 	private ArrayList<GameObject> listOfObjects;
 	//TODO add classes
