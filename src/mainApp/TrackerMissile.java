@@ -17,6 +17,7 @@ public class TrackerMissile extends Missile {
 	public TrackerMissile(int x, int y, Hero hero) {
 		super(x, y);
 		this.follow = hero; // hero
+		
 
 	}
 	
