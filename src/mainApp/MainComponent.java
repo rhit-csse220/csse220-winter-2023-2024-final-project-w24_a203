@@ -19,7 +19,7 @@ import javax.swing.JTextField;
 public class MainComponent extends JComponent {
 
 //	Hero hero = new Hero(200, 500);
-	private ArrayList<Missile> missles = new ArrayList<Missile>();
+	private ArrayList<Missile> missiles = new ArrayList<Missile>();
 	private ArrayList<Barrier> barriers = new ArrayList<Barrier>();
 	private ArrayList<ElectricBarrier> electricBarriers = new ArrayList<ElectricBarrier>();
 	private ArrayList<Coin> coins = new ArrayList<Coin>();
@@ -44,7 +44,7 @@ public class MainComponent extends JComponent {
 		Graphics2D g2 = (Graphics2D) g;
 		removeObjects();
 		if(lives>0) {
-		for (Missile missle : missles) {
+		for (Missile missle : missiles) {
 			missle.drawOn(g2);
 			if( missle.ifCollidedWithHero()==false && missle.collidedWithHero(hero)) {
 				lives -= 1;
@@ -106,7 +106,7 @@ public class MainComponent extends JComponent {
 			}
 		}
 		//listOfObjects.removeAll(objectsToRemove);
-		missles.removeAll(objectsToRemove);
+		missiles.removeAll(objectsToRemove);
 		coins.removeAll(objectsToRemove);
 		barriers.removeAll(objectsToRemove);
 		electricBarriers.removeAll(objectsToRemove);
@@ -121,7 +121,7 @@ public class MainComponent extends JComponent {
 		barriers.removeAll(barriers);
 		electricBarriers.removeAll(electricBarriers);
 		coins.removeAll(coins);
-		missles.removeAll(missles);
+		missiles.removeAll(missiles);
 		for (GameObject object : listOfObjects) {
 			if (object instanceof Barrier) {
 				barriers.add((Barrier) object);
@@ -130,7 +130,7 @@ public class MainComponent extends JComponent {
 			} else if (object instanceof Coin) {
 				coins.add((Coin) object);
 			} else if (object instanceof Missile) {
-				missles.add((Missile) object);
+				missiles.add((Missile) object);
 			}
 		}
 	}
