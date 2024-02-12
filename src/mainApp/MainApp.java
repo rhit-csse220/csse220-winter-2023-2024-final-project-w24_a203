@@ -17,6 +17,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -83,8 +84,26 @@ public class MainApp {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
-					} else if (filename.equals("level2.txt")) {
-						// jbuttons for restart or exit game
+					} else if (filename1.equals("level2.txt")) {
+		
+	// TODO: JBUTTONS TO RESTART/EXIT GAME WHEN PLAYER WINS
+						frame.setTitle("Game over..."); // this works
+						// line 91-103ish doesn't do anything...
+						// 
+						frame.setBackground(Color.cyan);
+
+						JPanel panel = new JPanel();
+						JButton exitGameButton = new JButton("EXIT GAME");
+						JButton restartGameButton = new JButton("RESTART GAME");
+
+//						panel.add(exitGameButton);
+//						panel.add(restartGameButton);
+//						frame.add(panel, BorderLayout.NORTH);
+						frame.add(exitGameButton);
+						frame.add(restartGameButton);
+						
+						System.out.println("PANEL ADDED"); // this prints
+						
 					}
 				}
 				System.out.println(levelListner.getFilename());

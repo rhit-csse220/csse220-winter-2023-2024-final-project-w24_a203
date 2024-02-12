@@ -1,5 +1,6 @@
 package mainApp;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -10,7 +11,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
@@ -86,6 +89,20 @@ public class MainComponent extends JComponent {
 //			g.setColor(Color.);
 //			g.drawIm(0, 0, 1000, 800);
 			g.drawString("GAME OVER", 200, 200);
+			g.drawString("TEST", 250, 250);
+			
+// TODO: add jbuttons to restart game?
+//			JPanel panel = new JPanel();
+//			
+//			JButton exitGameButton = new JButton("EXIT GAME");
+//			JButton restartGameButton = new JButton("RESTART GAME");
+//			
+//			panel.add(exitGameButton);
+//			panel.add(restartGameButton);
+//			System.out.println("panel added");
+
+
+			
 		}
 	}
 
