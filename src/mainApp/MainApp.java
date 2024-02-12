@@ -40,22 +40,24 @@ public class MainApp {
 	public static final int ROWS = 4;
 	public static final Dimension FRAME_SIZE = new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT);
 	Hero hero = new Hero(250, 500);
-	
+
 	private ArrayList<GameObject> listOfObjects;
-	//TODO add classes
-	//TODO check if the design does not violate 5 principles 
+
+	// TODO add classes
+	// TODO check if the design does not violate 5 principles
 	private void runApp() throws IOException, ObstacleNotFoundException {
 		JFrame frame = new JFrame();
 		frame.setSize(FRAME_SIZE);
 		frame.setTitle("JETPACK JOYRIDE!");
 
-		Scanner s = new Scanner(System.in); 
+		Scanner s = new Scanner(System.in);
 		System.out.println("What file should I load?  (e.g. level1.txt)");
 		String filename = s.nextLine();
 
-		MainComponent mainComponent = new MainComponent(readFile(filename),hero);
+		MainComponent mainComponent = new MainComponent(readFile(filename), hero);
 		mainComponent.requestFocusInWindow();
-		mainComponent.addKeyListener(new LevelListener(mainComponent, filename, this));
+		LevelListener levelListner = new LevelListener(mainComponent, filename, this);
+		mainComponent.addKeyListener(levelListner);
 		frame.add(mainComponent);
 
 		Timer timer = new Timer(DELAY, new ActionListener() {
@@ -63,9 +65,32 @@ public class MainApp {
 			public void actionPerformed(ActionEvent e) {
 				mainComponent.repaint();
 				mainComponent.move();
-				if(mainComponent.collideWithMissile()) {
+				String filename1 = levelListner.getFilename();
+				if (mainComponent.isLevelCompleted()) {
+					if (filename1.equals("level1.txt")) {
+						try {
+							//String filename = "level2.txt";
+							mainComponent.changeLevel(readFile("level2.txt"));
+							filename1 = "level2.txt";
+							levelListner.setFilename(filename1);
+						} catch (FileNotFoundException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (ObstacleNotFoundException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					} else if (filename.equals("level2.txt")) {
+						// jbuttons for restart or exit game
+					}
+				}
+				System.out.println(levelListner.getFilename());
+				if (mainComponent.collideWithMissile()) {
 					try {
-						mainComponent.changeLevel(readFile(filename));
+						mainComponent.changeLevel(readFile(filename1));
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -77,7 +102,7 @@ public class MainApp {
 						e1.printStackTrace();
 					}
 				}
-				//mainComponent.print(null);
+				// mainComponent.print(null);
 				frame.repaint();
 			}
 		});
@@ -113,10 +138,9 @@ public class MainApp {
 					} else if (line.charAt(i) == 'E') {
 						listOfObjects.add(new ElectricBarrier(xVal, yVal));
 					} else if (line.charAt(i) == 'M') {
-						listOfObjects.add(new Missile(xVal , yVal));
-					} 
-					else if (line.charAt(i) == 'T') {
-						listOfObjects.add(new TrackerMissile(xVal , yVal, hero));
+						listOfObjects.add(new Missile(xVal, yVal));
+					} else if (line.charAt(i) == 'T') {
+						listOfObjects.add(new TrackerMissile(xVal, yVal, hero));
 					} else if (line.charAt(i) == '.') {
 
 					} else {

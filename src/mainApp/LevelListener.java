@@ -28,10 +28,13 @@ public class LevelListener implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		
+		
 		if (e.getKeyChar() == 'u') {
+			
 			filename = "level2.txt";
 			System.out.println("U pressed");
-			System.out.println("in level 2");
+			System.out.println("in level " + 2);
 			try {
 				component.changeLevel(app.readFile(filename));
 
@@ -60,7 +63,15 @@ public class LevelListener implements KeyListener {
 		}
 
 	}
-
+	
+	public String getFilename() {
+		return filename;
+	}
+	
+	public void setFilename(String file) {
+		filename = file;
+	}
+	
 	@Override
 	public void keyReleased(KeyEvent e) {}
 

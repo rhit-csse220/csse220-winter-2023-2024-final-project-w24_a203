@@ -148,5 +148,12 @@ public class MainComponent extends JComponent {
 			return false;
 		}
 	}
+	
+	public boolean isLevelCompleted() {
+		if(missiles.isEmpty() && barriers.isEmpty() && electricBarriers.isEmpty() && coins.isEmpty()) {
+			return true;
+		}
+		return false;
+	}
 
 }
