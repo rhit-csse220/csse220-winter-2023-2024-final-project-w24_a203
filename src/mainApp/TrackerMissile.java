@@ -54,7 +54,7 @@ public class TrackerMissile extends Missile {
 		// TODO Auto-generated method stub
 		g = (Graphics2D)g.create();
 		g.setColor(Color.MAGENTA);
-		g.drawImage(this.image, super.getX(), super.getY(), 50, 35, super.getFrame());
+		g.drawImage(this.image, super.getX(), super.getY(), 75, 35, super.getFrame());
 //		g.fillRect(super.getX(), super.getY(), 35, 35);
 		return g;
 	}

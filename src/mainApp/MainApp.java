@@ -63,7 +63,7 @@ public class MainApp {
 		System.out.println("What file should I load?  (e.g. level1.txt)");
 		String filename = s.nextLine();
 		hero = new Hero(250, 500, frame);
-		mainComponent = new MainComponent(readFile(filename), hero);
+		mainComponent = new MainComponent(readFile(filename), hero, frame);
 		mainComponent.requestFocusInWindow();
 		LevelListener levelListner = new LevelListener(mainComponent, filename, this);
 		mainComponent.addKeyListener(levelListner);

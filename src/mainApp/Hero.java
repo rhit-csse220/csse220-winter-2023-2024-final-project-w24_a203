@@ -91,12 +91,12 @@ public class Hero extends GameObject {
 	public Graphics2D drawOn(Graphics2D g) {
 		g = (Graphics2D)g.create();
 		g.setColor(Color.black);
-		g.drawImage(image, super.getX(), super.getY(), 40, 40, super.getFrame());
+		g.drawImage(image, super.getX(), super.getY(), 50, 50, super.getFrame());
 //		g.fillRect(super.getX(), super.getY(), 30, 30);
 		return g;
 	}
 	public Rectangle2D.Double getBoundingBox() {
-		return new Rectangle2D.Double(super.getX(), super.getY(), 40, 40 );
+		return new Rectangle2D.Double(super.getX(), super.getY(), 50, 50 );
 	}
 	public void pushBack() {
 		// TODO Auto-generated method stub

@@ -7,10 +7,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -35,8 +38,10 @@ public class MainComponent extends JComponent {
 	private int lives = 3;
 	private int previousLives = 3;
 	private JFrame frame;
+	private BufferedImage image;
+	private int x;
 	
-	public MainComponent(ArrayList<GameObject> listOfObjects, Hero hero) {
+	public MainComponent(ArrayList<GameObject> listOfObjects, Hero hero, JFrame frame) {
 		System.out.println("In MainComponent File");
 		this.listOfObjects = listOfObjects;
 		this.createArrayListsOfObjects();
@@ -45,6 +50,13 @@ public class MainComponent extends JComponent {
 		this.addKeyListener(heroListener);
 		this.IfGameIsOver = false;
 		this.frame = frame;
+		try {
+			image = ImageIO.read(new File("sprites/background.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.x = 0;
 	}
 
 	@Override
@@ -53,6 +65,8 @@ public class MainComponent extends JComponent {
 		if(!IfGameIsOver) {
 		removeObjects();
 		if(lives>0) {
+			g.drawImage(image, this.x, 0, MainApp.SCREEN_WIDTH*3, MainApp.SCREEN_HEIGHT, this.frame);
+			x += -5;
 		for (Missile missle : missiles) {
 			missle.drawOn(g2);
 			if( missle.ifCollidedWithHero()==false && missle.collidedWithHero(hero)) {
