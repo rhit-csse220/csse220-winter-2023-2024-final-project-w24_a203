@@ -1,9 +1,12 @@
 package mainApp;
 
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -40,14 +43,17 @@ public class MainApp {
 	public static final int SCREEN_WIDTH = 1000;
 	public static final int ROWS = 4;
 	public static final Dimension FRAME_SIZE = new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT);
-	Hero hero = new Hero(250, 500);
+	private Hero hero = new Hero(250, 500);
+	private Timer timer;
+	private JFrame frame;
+	private boolean IfGameIsOver = false;
 
 	private ArrayList<GameObject> listOfObjects;
 
 	// TODO add classes
 	// TODO check if the design does not violate 5 principles
 	private void runApp() throws IOException, ObstacleNotFoundException {
-		JFrame frame = new JFrame();
+		frame = new JFrame();
 		frame.setSize(FRAME_SIZE);
 		frame.setTitle("JETPACK JOYRIDE!");
 
@@ -61,7 +67,7 @@ public class MainApp {
 		mainComponent.addKeyListener(levelListner);
 		frame.add(mainComponent);
 
-		Timer timer = new Timer(DELAY, new ActionListener() {
+		timer = new Timer(DELAY, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				mainComponent.repaint();
@@ -87,22 +93,7 @@ public class MainApp {
 					} else if (filename1.equals("level2.txt")) {
 		
 	// TODO: JBUTTONS TO RESTART/EXIT GAME WHEN PLAYER WINS
-						frame.setTitle("Game over..."); // this works
-						// line 91-103ish doesn't do anything...
-						// 
-						frame.setBackground(Color.cyan);
-
-						JPanel panel = new JPanel();
-						JButton exitGameButton = new JButton("EXIT GAME");
-						JButton restartGameButton = new JButton("RESTART GAME");
-
-//						panel.add(exitGameButton);
-//						panel.add(restartGameButton);
-//						frame.add(panel, BorderLayout.NORTH);
-						frame.add(exitGameButton);
-						frame.add(restartGameButton);
-						
-						System.out.println("PANEL ADDED"); // this prints
+						gameOver();
 						
 					}
 				}
@@ -131,6 +122,18 @@ public class MainApp {
 		frame.setVisible(true);
 	} // runApp
 
+	public void gameOver() {
+		timer.stop();
+		frame.setBackground(Color.blue);
+		System.out.println("Game Over");
+		frame.removeAll();
+		frame.repaint();
+		JButton button = new JButton("Game Over");
+		frame.add(button);
+		frame.repaint();
+		
+	}
+	
 	public ArrayList<GameObject> readFile(String filename)
 			throws FileNotFoundException, IOException, ObstacleNotFoundException {
 

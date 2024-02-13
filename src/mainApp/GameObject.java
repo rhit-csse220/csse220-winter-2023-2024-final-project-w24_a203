@@ -42,7 +42,7 @@ public abstract class GameObject {
 	}
 	
 	public void move() { // move screen
-		this.x -= 5;
+		this.x -= 10; // TODO cahnge to 5
 	}
 	public int getY() {
 		return this.y;
