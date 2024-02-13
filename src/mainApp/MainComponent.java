@@ -53,7 +53,7 @@ public class MainComponent extends JComponent {
 		this.frame = frame;
 		try {
 			image = ImageIO.read(new File("sprites/background.png"));
-			imageGameOver = ImageIO.read(new File("\"sprites/gameOver.png"));
+			imageGameOver = ImageIO.read(new File("sprites/gameOver.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -113,7 +113,7 @@ public class MainComponent extends JComponent {
 //			g.drawString("GAME OVER", 200, 200);
 //			g.drawString("TEST", 250, 250);
 			// TODO: set font? or edit game over image to show what to do to replay/exit
-			g.drawImage(imageGameOver, 100, 100, 1000, 800, this.frame);
+			g.drawImage(imageGameOver, 0, 0, MainApp.SCREEN_WIDTH, MainApp.SCREEN_HEIGHT, this.frame);
 			
 // TODO: add jbuttons to restart game?
 //			JPanel panel = new JPanel();
