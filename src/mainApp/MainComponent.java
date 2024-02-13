@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -33,6 +34,7 @@ public class MainComponent extends JComponent {
 	private int points = 0;
 	private int lives = 3;
 	private int previousLives = 3;
+	private JFrame frame;
 	
 	public MainComponent(ArrayList<GameObject> listOfObjects, Hero hero) {
 		System.out.println("In MainComponent File");
@@ -42,6 +44,7 @@ public class MainComponent extends JComponent {
 		HeroListener heroListener = new HeroListener(hero);
 		this.addKeyListener(heroListener);
 		this.IfGameIsOver = false;
+		this.frame = frame;
 	}
 
 	@Override

@@ -2,7 +2,10 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.image.ImageObserver;
 import java.util.Random;
+
+import javax.swing.JFrame;
 
 /**
  * TODO: ADD JAVA DOC HERE
@@ -16,7 +19,14 @@ public abstract class GameObject {
 	private int x, y;
 	double angle;
 	Random rand = new Random();
+	private JFrame frame;
 
+	public GameObject(int x, int y, JFrame frame) {
+		this.x = x;
+		this.y = y;
+		this.frame =frame;
+		
+	}
 	public GameObject(int x, int y) {
 		this.x = x;
 		this.y = y;
@@ -50,6 +60,10 @@ public abstract class GameObject {
 	
 	public int getX() {
 		return this.x;
+	}
+	public ImageObserver getFrame() {
+		// TODO Auto-generated method stub
+		return frame;
 	}
 	
 	

@@ -5,7 +5,13 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 
 /**
  * TODO: ADD JAVA DOC HERE
@@ -20,13 +26,20 @@ public class Hero extends GameObject {
 	private int velocityX;
 	private boolean fly;
 	private boolean push;
+	private BufferedImage image;
 	
-	public Hero(int x, int y) {
-		super(x, y);
+	public Hero(int x, int y, JFrame frame) {
+		super(x, y, frame);
 		this.velocityY = 0;
 		this.velocityX = 0;
 		this.fly = false;
 		this.push= false;
+		try {
+			image = ImageIO.read(new File("sprites/hero.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public void move() {
 		if(fly) {
@@ -78,11 +91,12 @@ public class Hero extends GameObject {
 	public Graphics2D drawOn(Graphics2D g) {
 		g = (Graphics2D)g.create();
 		g.setColor(Color.black);
-		g.fillRect(super.getX(), super.getY(), 30, 30);
+		g.drawImage(image, super.getX(), super.getY(), 40, 40, super.getFrame());
+//		g.fillRect(super.getX(), super.getY(), 30, 30);
 		return g;
 	}
 	public Rectangle2D.Double getBoundingBox() {
-		return new Rectangle2D.Double(super.getX(), super.getY(), 30, 30 );
+		return new Rectangle2D.Double(super.getX(), super.getY(), 40, 40 );
 	}
 	public void pushBack() {
 		// TODO Auto-generated method stub

@@ -43,7 +43,8 @@ public class MainApp {
 	public static final int SCREEN_WIDTH = 1000;
 	public static final int ROWS = 4;
 	public static final Dimension FRAME_SIZE = new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT);
-	private Hero hero = new Hero(250, 500);
+//	private Hero hero = new Hero(250, 500);
+	private Hero hero;
 	private Timer timer;
 	private JFrame frame;
 	public boolean IfGameIsOver = false;
@@ -61,7 +62,7 @@ public class MainApp {
 		Scanner s = new Scanner(System.in);
 		System.out.println("What file should I load?  (e.g. level1.txt)");
 		String filename = s.nextLine();
-
+		hero = new Hero(250, 500, frame);
 		mainComponent = new MainComponent(readFile(filename), hero);
 		mainComponent.requestFocusInWindow();
 		LevelListener levelListner = new LevelListener(mainComponent, filename, this);
@@ -159,7 +160,7 @@ public class MainApp {
 					int yVal = row * (SCREEN_HEIGHT / ROWS) + 30;
 
 					if (line.charAt(i) == 'C') {
-						Coin coin = new Coin(xVal, yVal);
+						Coin coin = new Coin(xVal, yVal, frame);
 						listOfObjects.add(coin);
 					} else if (line.charAt(i) == 'B') {
 						listOfObjects.add(new Barrier(xVal, yVal));

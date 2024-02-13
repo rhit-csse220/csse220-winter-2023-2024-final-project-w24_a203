@@ -2,6 +2,12 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 
 public class Coin extends GameObject {
 
@@ -9,17 +15,25 @@ public class Coin extends GameObject {
 	 * DONE: ADD JAVA DOCS Class: Coin Purpose: Coins that hero can collect. Hero
 	 * gets points for each coin collected. After a coin is collected, it disappears
 	 * from screen.
+	 * @param frame 
 	 */
-
-	public Coin(int x, int y) {
-		super(x, y);
+	private Image image;
+	public Coin(int x, int y, JFrame frame) {
+		super(x, y, frame);
+		try {
+			image = ImageIO.read(new File("sprites/coin.jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public Graphics2D drawOn(Graphics2D g) {
 		g = (Graphics2D) g.create();
 		g.setColor(Color.orange);
-		g.fillOval(super.getX(), super.getY(), 40, 40);
+		g.drawImage(image, super.getX(), super.getY(), 40, 40, super.getFrame());
+//		g.fillOval(super.getX(), super.getY(), 40, 40);
 		return g;
 	}
 
