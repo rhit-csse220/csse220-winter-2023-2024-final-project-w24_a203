@@ -69,6 +69,9 @@ public class MainComponent extends JComponent {
 			if (lives > 0) {
 				g.drawImage(image, this.x, 0, MainApp.SCREEN_WIDTH * 3, MainApp.SCREEN_HEIGHT, this.frame);
 				x += -5;
+				if (this.x < -MainApp.SCREEN_WIDTH * 2) {
+					this.x = 0;
+				}
 				for (Missile missle : missiles) {
 					missle.drawOn(g2);
 					if (missle.ifCollidedWithHero() == false && missle.collidedWithHero(hero)) {
@@ -106,10 +109,14 @@ public class MainComponent extends JComponent {
 
 				// TODO: set font? or edit game over image to show what to do to replay/exit
 				g.drawImage(imageGameOver, 0, 0, MainApp.SCREEN_WIDTH, MainApp.SCREEN_HEIGHT, this.frame);
+				g2.setColor(Color.white);
+				g2.drawString("YOU LOSE :(", MainApp.SCREEN_WIDTH/2, MainApp.SCREEN_HEIGHT / 4);
 
 			}
 		} else {
 			g.drawImage(imageGameOver, 0, 0, MainApp.SCREEN_WIDTH, MainApp.SCREEN_HEIGHT, this.frame);
+			g2.setColor(Color.white);
+			g2.drawString("YOU WON :)", MainApp.SCREEN_WIDTH/2, MainApp.SCREEN_HEIGHT / 4);
 		}
 	}
 
@@ -181,6 +188,7 @@ public class MainComponent extends JComponent {
 
 	public void setLives(int lives) {
 		this.lives  = lives;
+		this.points = 0;
 		
 	}
 	public void setGameOver(boolean gameState) {
