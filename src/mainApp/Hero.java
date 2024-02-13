@@ -25,7 +25,7 @@ public class Hero extends GameObject {
 	private int velocityY;
 	private int velocityX;
 	private boolean fly;
-	private boolean push;
+	private static final int HEIGHT= 50;
 	private BufferedImage image;
 	
 	public Hero(int x, int y, JFrame frame) {
@@ -33,7 +33,6 @@ public class Hero extends GameObject {
 		this.velocityY = 0;
 		this.velocityX = 0;
 		this.fly = false;
-		this.push= false;
 		try {
 			image = ImageIO.read(new File("sprites/hero.png"));
 		} catch (IOException e) {
@@ -48,9 +47,9 @@ public class Hero extends GameObject {
 		else {
 			velocityY += 1;
 		}
-		if(super.getY() > MainApp.SCREEN_HEIGHT - 70 && velocityY > 0) {
+		if(super.getY() > MainApp.SCREEN_HEIGHT - HEIGHT*2 && velocityY > 0) {
 			velocityY = 0;
-			super.setY(MainApp.SCREEN_HEIGHT - 70);
+			super.setY(MainApp.SCREEN_HEIGHT - HEIGHT*2);
 		}
 		if(super.getY() < 0 && velocityY < 0) {
 			velocityY = 0;
@@ -91,7 +90,7 @@ public class Hero extends GameObject {
 	public Graphics2D drawOn(Graphics2D g) {
 		g = (Graphics2D)g.create();
 		g.setColor(Color.black);
-		g.drawImage(image, super.getX(), super.getY(), 50, 50, super.getFrame());
+		g.drawImage(image, super.getX(), super.getY(), HEIGHT, HEIGHT, super.getFrame());
 //		g.fillRect(super.getX(), super.getY(), 30, 30);
 		return g;
 	}
