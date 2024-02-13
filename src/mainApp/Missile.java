@@ -37,7 +37,7 @@ public class Missile extends GameObject{
 	public Graphics2D drawOn(Graphics2D g) {
 		g = (Graphics2D)g.create();
 		g.setColor(Color.red);
-		g.drawImage(this.image, super.getX(), super.getY(), 35, 35, super.getFrame());
+		g.drawImage(this.image, super.getX(), super.getY(), 50, 35, super.getFrame());
 //		g.fillRect(super.getX(), super.getY(), 35, 35);
 		return g;
 	}
