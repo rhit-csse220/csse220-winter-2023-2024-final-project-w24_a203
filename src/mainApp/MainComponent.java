@@ -181,6 +181,7 @@ public class MainComponent extends JComponent {
 
 	public void setLives(int lives) {
 		this.lives  = lives;
+		
 	}
 	public void setGameOver(boolean gameState) {
 		// TODO Auto-generated method stub

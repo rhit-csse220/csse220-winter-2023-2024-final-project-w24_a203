@@ -47,6 +47,7 @@ public class MainApp {
 	private Hero hero;
 	private Timer timer;
 	private JFrame frame;
+	private String filename1;
 	public boolean IfGameIsOver = false;
 
 	private ArrayList<GameObject> listOfObjects;
@@ -74,7 +75,7 @@ public class MainApp {
 			public void actionPerformed(ActionEvent e) {
 				mainComponent.repaint();
 				mainComponent.move();
-				String filename1 = levelListner.getFilename();
+				filename1 = levelListner.getFilename();
 				if (mainComponent.isLevelCompleted()) {
 					if (filename1.equals("level1.txt")) {
 						try {
