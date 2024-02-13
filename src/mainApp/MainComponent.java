@@ -26,6 +26,7 @@ public class MainComponent extends JComponent {
 	private ArrayList<Barrier> barriers = new ArrayList<Barrier>();
 	private ArrayList<ElectricBarrier> electricBarriers = new ArrayList<ElectricBarrier>();
 	private ArrayList<Coin> coins = new ArrayList<Coin>();
+	private boolean IfGameIsOver;
 
 	private ArrayList<GameObject> listOfObjects;
 	private Hero hero;
@@ -40,11 +41,13 @@ public class MainComponent extends JComponent {
 		this.hero = hero;
 		HeroListener heroListener = new HeroListener(hero);
 		this.addKeyListener(heroListener);
+		this.IfGameIsOver = false;
 	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
+		if(!IfGameIsOver) {
 		removeObjects();
 		if(lives>0) {
 		for (Missile missle : missiles) {
@@ -103,6 +106,13 @@ public class MainComponent extends JComponent {
 
 
 			
+		}
+		}
+		else {
+			g2.setColor(Color.cyan);
+			g2.fillRect(0, 0, MainApp.SCREEN_WIDTH, MainApp.SCREEN_HEIGHT);
+			g2.setColor(Color.black);
+			g2.drawString("GameOver",MainApp.SCREEN_WIDTH/2, MainApp.SCREEN_HEIGHT/2);
 		}
 	}
 
@@ -171,6 +181,11 @@ public class MainComponent extends JComponent {
 			return true;
 		}
 		return false;
+	}
+
+	public void setGameOver(boolean gameState) {
+		// TODO Auto-generated method stub
+		IfGameIsOver = gameState;
 	}
 
 }

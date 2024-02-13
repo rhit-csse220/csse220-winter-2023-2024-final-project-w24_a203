@@ -46,9 +46,10 @@ public class MainApp {
 	private Hero hero = new Hero(250, 500);
 	private Timer timer;
 	private JFrame frame;
-	private boolean IfGameIsOver = false;
+	public boolean IfGameIsOver = false;
 
 	private ArrayList<GameObject> listOfObjects;
+	private MainComponent mainComponent;
 
 	// TODO add classes
 	// TODO check if the design does not violate 5 principles
@@ -61,7 +62,7 @@ public class MainApp {
 		System.out.println("What file should I load?  (e.g. level1.txt)");
 		String filename = s.nextLine();
 
-		MainComponent mainComponent = new MainComponent(readFile(filename), hero);
+		mainComponent = new MainComponent(readFile(filename), hero);
 		mainComponent.requestFocusInWindow();
 		LevelListener levelListner = new LevelListener(mainComponent, filename, this);
 		mainComponent.addKeyListener(levelListner);
@@ -123,15 +124,20 @@ public class MainApp {
 	} // runApp
 
 	public void gameOver() {
-		timer.stop();
-		frame.setBackground(Color.blue);
-		System.out.println("Game Over");
-		frame.removeAll();
-		frame.repaint();
-		JButton button = new JButton("Game Over");
-		frame.add(button);
+//		timer.stop();
+		IfGameIsOver = true;
+		mainComponent.setGameOver(true);
+//		frame.setBackground(Color.blue);
+//		System.out.println("Game Over");
+//		frame.removeAll();
+//		frame.repaint();
+//		JButton button = new JButton("Game Over");
+//		frame.add(button);
 		frame.repaint();
 		
+	}
+	public boolean getGameOver() {
+		return IfGameIsOver;
 	}
 	
 	public ArrayList<GameObject> readFile(String filename)
@@ -204,5 +210,29 @@ public class MainApp {
 		}
 
 	} // main
+
+	public void close() {
+		// TODO Auto-generated method stub
+		frame.dispose();
+		System.exit(0);
+	}
+
+	public void restart() {
+		// TODO Auto-generated method stub
+		IfGameIsOver = false;
+		mainComponent.setGameOver(false);
+		try {
+			mainComponent.changeLevel(readFile("level1.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ObstacleNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }

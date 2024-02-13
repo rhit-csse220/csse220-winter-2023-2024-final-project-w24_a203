@@ -61,6 +61,12 @@ public class LevelListener implements KeyListener {
 				e1.printStackTrace();
 			}
 		}
+		else if (e.getKeyChar() == 'x') {
+			app.close();
+		}
+		else if (e.getKeyChar() == 'r') {
+			app.restart();
+		}
 
 	}
 	
