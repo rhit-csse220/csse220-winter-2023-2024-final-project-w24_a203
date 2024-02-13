@@ -103,6 +103,7 @@ public class MainComponent extends JComponent {
 
 		}
 		hero.drawOn(g2);
+		g2.setColor(Color.white);
 		g2.drawString("Points: " + points, 10, 20);
 		g2.drawString("Lives : " + lives, 900, 20);
 		super.paintComponent(g);
