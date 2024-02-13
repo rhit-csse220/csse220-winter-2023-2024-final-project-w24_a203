@@ -165,11 +165,11 @@ public class MainApp {
 					} else if (line.charAt(i) == 'B') {
 						listOfObjects.add(new Barrier(xVal, yVal));
 					} else if (line.charAt(i) == 'E') {
-						listOfObjects.add(new ElectricBarrier(xVal, yVal));
+						listOfObjects.add(new ElectricBarrier(xVal, yVal,frame));
 					} else if (line.charAt(i) == 'M') {
-						listOfObjects.add(new Missile(xVal, yVal));
+						listOfObjects.add(new Missile(xVal, yVal, frame));
 					} else if (line.charAt(i) == 'T') {
-						listOfObjects.add(new TrackerMissile(xVal, yVal, hero));
+						listOfObjects.add(new TrackerMissile(xVal, yVal, hero, frame));
 					} else if (line.charAt(i) == '.') {
 
 					} else {

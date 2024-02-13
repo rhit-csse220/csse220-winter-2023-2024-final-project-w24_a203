@@ -2,6 +2,12 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 
 /*
  * TODO: ADD JAVA DOCS
@@ -11,9 +17,16 @@ import java.awt.Graphics2D;
  */
 public class Missile extends GameObject{
 	private boolean collidedWithHero = false;
+	private BufferedImage image;
 	
-	public Missile(int x, int y) {
-		super(x, y);
+	public Missile(int x, int y, JFrame frame) {
+		super(x, y, frame);
+		try {
+			image = ImageIO.read(new File("sprites/missile.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	@Override
 	public void move() {
@@ -24,7 +37,8 @@ public class Missile extends GameObject{
 	public Graphics2D drawOn(Graphics2D g) {
 		g = (Graphics2D)g.create();
 		g.setColor(Color.red);
-		g.fillRect(super.getX(), super.getY(), 35, 35);
+		g.drawImage(this.image, super.getX(), super.getY(), 35, 35, super.getFrame());
+//		g.fillRect(super.getX(), super.getY(), 35, 35);
 		return g;
 	}
 	

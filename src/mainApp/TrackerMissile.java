@@ -2,6 +2,12 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 
 /*
  * TODO: ADD JAVA DOCS
@@ -13,12 +19,17 @@ import java.awt.Graphics2D;
 public class TrackerMissile extends Missile {
 
 	private GameObject follow;
+	private BufferedImage image;
 
-	public TrackerMissile(int x, int y, Hero hero) {
-		super(x, y);
+	public TrackerMissile(int x, int y, Hero hero, JFrame frame) {
+		super(x, y, frame);
 		this.follow = hero; // hero
-		
-
+		try {
+			image = ImageIO.read(new File("sprites/trackerMissile.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
@@ -43,7 +54,8 @@ public class TrackerMissile extends Missile {
 		// TODO Auto-generated method stub
 		g = (Graphics2D)g.create();
 		g.setColor(Color.MAGENTA);
-		g.fillRect(super.getX(), super.getY(), 35, 35);
+		g.drawImage(this.image, super.getX(), super.getY(), 35, 35, super.getFrame());
+//		g.fillRect(super.getX(), super.getY(), 35, 35);
 		return g;
 	}
 }

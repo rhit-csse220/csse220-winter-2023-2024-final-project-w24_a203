@@ -5,9 +5,14 @@ import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.Area;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.geom.Line2D;
 
+import javax.imageio.ImageIO;
 import javax.sound.sampled.Line;
+import javax.swing.JFrame;
 
 
 /**
@@ -19,10 +24,17 @@ import javax.sound.sampled.Line;
 public class ElectricBarrier extends GameObject{
 
 	private int angle;
+	private BufferedImage image;
 
-	public ElectricBarrier(int x, int y) {
-		super(x,y);
+	public ElectricBarrier(int x, int y, JFrame frame) {
+		super(x,y,frame);
 		this.angle = (int) rand.nextDouble(-3.14/2, 3.14/2);
+		try {
+			image = ImageIO.read(new File("sprites/electricBarrier.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 
@@ -31,7 +43,8 @@ public class ElectricBarrier extends GameObject{
 		g = (Graphics2D)g.create();
 		g.setColor(Color.green);
 		g.rotate(angle, super.getX(), super.getY());
-		g.fillRect(super.getX(), super.getY(), 20, 200);
+		g.drawImage(image, super.getX(), super.getY(), 20, 200, super.getFrame());
+//		g.fillRect(super.getX(), super.getY(), 20, 200);
 		return g;
 	}
 
