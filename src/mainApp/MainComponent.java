@@ -39,6 +39,7 @@ public class MainComponent extends JComponent {
 	private int previousLives = 3;
 	private JFrame frame;
 	private BufferedImage image;
+	private BufferedImage imageGameOver;
 	private int x;
 	
 	public MainComponent(ArrayList<GameObject> listOfObjects, Hero hero, JFrame frame) {
@@ -52,6 +53,7 @@ public class MainComponent extends JComponent {
 		this.frame = frame;
 		try {
 			image = ImageIO.read(new File("sprites/background.png"));
+			imageGameOver = ImageIO.read(new File("\"sprites/gameOver.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -108,8 +110,10 @@ public class MainComponent extends JComponent {
 		else {
 //			g.setColor(Color.);
 //			g.drawIm(0, 0, 1000, 800);
-			g.drawString("GAME OVER", 200, 200);
-			g.drawString("TEST", 250, 250);
+//			g.drawString("GAME OVER", 200, 200);
+//			g.drawString("TEST", 250, 250);
+			// TODO: set font? or edit game over image to show what to do to replay/exit
+			g.drawImage(imageGameOver, 100, 100, 1000, 800, this.frame);
 			
 // TODO: add jbuttons to restart game?
 //			JPanel panel = new JPanel();
