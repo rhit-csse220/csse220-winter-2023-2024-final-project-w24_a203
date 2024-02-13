@@ -125,15 +125,8 @@ public class MainApp {
 	} // runApp
 
 	public void gameOver() {
-//		timer.stop();
 		IfGameIsOver = true;
 		mainComponent.setGameOver(true);
-//		frame.setBackground(Color.blue);
-//		System.out.println("Game Over");
-//		frame.removeAll();
-//		frame.repaint();
-//		JButton button = new JButton("Game Over");
-//		frame.add(button);
 		frame.repaint();
 		
 	}
@@ -222,6 +215,7 @@ public class MainApp {
 		// TODO Auto-generated method stub
 		IfGameIsOver = false;
 		mainComponent.setGameOver(false);
+		mainComponent.setLives(3);
 		try {
 			mainComponent.changeLevel(readFile("level1.txt"));
 		} catch (FileNotFoundException e) {

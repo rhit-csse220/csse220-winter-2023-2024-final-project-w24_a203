@@ -41,7 +41,7 @@ public class MainComponent extends JComponent {
 	private BufferedImage image;
 	private BufferedImage imageGameOver;
 	private int x;
-	
+
 	public MainComponent(ArrayList<GameObject> listOfObjects, Hero hero, JFrame frame) {
 		System.out.println("In MainComponent File");
 		this.listOfObjects = listOfObjects;
@@ -64,79 +64,52 @@ public class MainComponent extends JComponent {
 	@Override
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
-		if(!IfGameIsOver) {
-		removeObjects();
-		if(lives>0) {
-			g.drawImage(image, this.x, 0, MainApp.SCREEN_WIDTH*3, MainApp.SCREEN_HEIGHT, this.frame);
-			x += -5;
-		for (Missile missle : missiles) {
-			missle.drawOn(g2);
-			if( missle.ifCollidedWithHero()==false && missle.collidedWithHero(hero)) {
-				lives -= 1;
-				break;
-			}
-		}
-//		if(previousLives != lives) {
-//			previousLives = lives;
-//			System.out.println("Restart the level");
-//			this.createArrayListsOfObjects();
-//		}
-		for (Barrier barrier : barriers) {
-			barrier.drawOn(g2);
-			if(barrier.collidedWithHero(hero)) {
-				hero.pushBack();
-			}
-		
-		}
-		for (ElectricBarrier ebarrier : electricBarriers) {
-			ebarrier.drawOn(g2);
-			if(ebarrier.collidedWithHero(hero)) {
-				lives -= 1;
-			}
-		}
-		for (Coin coin : coins) {
-			coin.drawOn(g2);
-			if (coin.collidedWithHero(hero)) {
-				points += 1;
-				break;
-			}
+		if (!IfGameIsOver) {
+			removeObjects();
+			if (lives > 0) {
+				g.drawImage(image, this.x, 0, MainApp.SCREEN_WIDTH * 3, MainApp.SCREEN_HEIGHT, this.frame);
+				x += -5;
+				for (Missile missle : missiles) {
+					missle.drawOn(g2);
+					if (missle.ifCollidedWithHero() == false && missle.collidedWithHero(hero)) {
+						lives -= 1;
+						break;
+					}
+				}
+				for (Barrier barrier : barriers) {
+					barrier.drawOn(g2);
+					if (barrier.collidedWithHero(hero)) {
+						hero.pushBack();
+					}
 
-		}
-		hero.drawOn(g2);
-		g2.setColor(Color.white);
-		g2.drawString("Points: " + points, 10, 20);
-		g2.drawString("Lives : " + lives, 900, 20);
-		super.paintComponent(g);
-		}
-		else {
-//			g.setColor(Color.);
-//			g.drawIm(0, 0, 1000, 800);
-//			g.drawString("GAME OVER", 200, 200);
-//			g.drawString("TEST", 250, 250);
-			// TODO: set font? or edit game over image to show what to do to replay/exit
+				}
+				for (ElectricBarrier ebarrier : electricBarriers) {
+					ebarrier.drawOn(g2);
+					if (ebarrier.collidedWithHero(hero)) {
+						lives -= 1;
+					}
+				}
+				for (Coin coin : coins) {
+					coin.drawOn(g2);
+					if (coin.collidedWithHero(hero)) {
+						points += 1;
+						break;
+					}
+
+				}
+				hero.drawOn(g2);
+				g2.setColor(Color.white);
+				g2.drawString("Points: " + points, 10, 20);
+				g2.drawString("Lives : " + lives, 900, 20);
+				super.paintComponent(g);
+			} else {
+
+				// TODO: set font? or edit game over image to show what to do to replay/exit
+				g.drawImage(imageGameOver, 0, 0, MainApp.SCREEN_WIDTH, MainApp.SCREEN_HEIGHT, this.frame);
+
+			}
+		} else {
 			g.drawImage(imageGameOver, 0, 0, MainApp.SCREEN_WIDTH, MainApp.SCREEN_HEIGHT, this.frame);
-			
-// TODO: add jbuttons to restart game?
-//			JPanel panel = new JPanel();
-//			
-//			JButton exitGameButton = new JButton("EXIT GAME");
-//			JButton restartGameButton = new JButton("RESTART GAME");
-//			
-//			panel.add(exitGameButton);
-//			panel.add(restartGameButton);
-//			System.out.println("panel added");
-
-
-			
-		}
-		}
-		else {
-			g2.setColor(Color.pink);
-			g2.fillRect(0, 0, MainApp.SCREEN_WIDTH, MainApp.SCREEN_HEIGHT);
-			g2.setColor(Color.black);
-			g2.drawString("GameOver",MainApp.SCREEN_WIDTH/2, MainApp.SCREEN_HEIGHT/2);
-			g2.drawString("If you want to play again press R", MainApp.SCREEN_WIDTH/2, MainApp.SCREEN_HEIGHT/2 + 30);
-			g2.drawString("If you want to exit press X", MainApp.SCREEN_WIDTH/2, MainApp.SCREEN_HEIGHT/2 + 60);
 		}
 	}
 
@@ -156,7 +129,6 @@ public class MainComponent extends JComponent {
 				objectsToRemove.add(object);
 			}
 		}
-		//listOfObjects.removeAll(objectsToRemove);
 		missiles.removeAll(objectsToRemove);
 		coins.removeAll(objectsToRemove);
 		barriers.removeAll(objectsToRemove);
@@ -190,23 +162,26 @@ public class MainComponent extends JComponent {
 	public boolean isFocusable() {
 		return true;
 	}
-	
+
 	public boolean collideWithMissile() {
-		if(previousLives != lives) {
+		if (previousLives != lives) {
 			previousLives = lives;
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
-	
+
 	public boolean isLevelCompleted() {
-		if(missiles.isEmpty() && barriers.isEmpty() && electricBarriers.isEmpty() && coins.isEmpty()) {
+		if (missiles.isEmpty() && barriers.isEmpty() && electricBarriers.isEmpty() && coins.isEmpty()) {
 			return true;
 		}
 		return false;
 	}
 
+	public void setLives(int lives) {
+		this.lives  = lives;
+	}
 	public void setGameOver(boolean gameState) {
 		// TODO Auto-generated method stub
 		IfGameIsOver = gameState;
