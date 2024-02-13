@@ -21,7 +21,7 @@ public class Coin extends GameObject {
 	public Coin(int x, int y, JFrame frame) {
 		super(x, y, frame);
 		try {
-			image = ImageIO.read(new File("sprites/coin.jpg"));
+			image = ImageIO.read(new File("sprites/coin.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

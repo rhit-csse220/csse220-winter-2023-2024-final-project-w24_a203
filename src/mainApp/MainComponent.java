@@ -112,12 +112,12 @@ public class MainComponent extends JComponent {
 		}
 		}
 		else {
-			g2.setColor(Color.cyan);
+			g2.setColor(Color.pink);
 			g2.fillRect(0, 0, MainApp.SCREEN_WIDTH, MainApp.SCREEN_HEIGHT);
 			g2.setColor(Color.black);
 			g2.drawString("GameOver",MainApp.SCREEN_WIDTH/2, MainApp.SCREEN_HEIGHT/2);
 			g2.drawString("If you want to play again press R", MainApp.SCREEN_WIDTH/2, MainApp.SCREEN_HEIGHT/2 + 30);
-			g2.drawString("If you want to exit press E", MainApp.SCREEN_WIDTH/2, MainApp.SCREEN_HEIGHT/2 + 60);
+			g2.drawString("If you want to exit press X", MainApp.SCREEN_WIDTH/2, MainApp.SCREEN_HEIGHT/2 + 60);
 		}
 	}
 

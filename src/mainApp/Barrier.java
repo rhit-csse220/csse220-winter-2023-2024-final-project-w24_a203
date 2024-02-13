@@ -4,6 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 //import game.GameObject;
 
@@ -15,10 +20,17 @@ import java.awt.geom.Rectangle2D;
 public class Barrier extends GameObject {
 
 	private int angle;
+	private BufferedImage image;
 
 	public Barrier(int x, int y) {
 		super(x, y);
 		this.angle = (int) rand.nextDouble(-3.14 / 2, 3.14 / 2);
+		try {
+			image = ImageIO.read(new File("sprites/barrier.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 //		this.angle = Angle;
 		
 				
@@ -30,7 +42,8 @@ public class Barrier extends GameObject {
 		g.setColor(Color.pink);
 //		g.drawLine(super.getX(), super.getY(),(int)(Math.sin(-angle)*200+super.getX()),(int)(Math.cos(-angle)*200+super.getY()));
 		g.rotate(angle, super.getX(), super.getY());
-		g.fillRect(super.getX(), super.getY(), 20, 200);
+		g.drawImage(image, super.getX(), super.getY(), 20, 200, super.getFrame());
+//		g.fillRect(super.getX(), super.getY(), 20, 200);
 		return g;
 	}
 
