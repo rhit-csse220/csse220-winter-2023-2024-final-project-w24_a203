@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 /*
- * TODO: ADD JAVA DOCS
+ * DONE: ADD JAVA DOCS
  * Class: TrackerMissile
  * Purpose: A tracking missile that the hero needs to avoid.
  * If the hero is hit, they lose a life. This missile tracks the hero's 
