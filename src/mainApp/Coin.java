@@ -42,7 +42,7 @@ public class Coin extends GameObject {
 		if(super.collidedWithHero(hero)) {
 			setX(-10); //removes the coin from JFrame
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}

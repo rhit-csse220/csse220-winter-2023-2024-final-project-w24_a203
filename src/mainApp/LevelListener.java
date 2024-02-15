@@ -21,6 +21,7 @@ public class LevelListener implements KeyListener {
 		this.component = component;
 		this.app = app;
 	}
+
 	@Override
 	public void keyTyped(KeyEvent e) {
 
@@ -28,16 +29,13 @@ public class LevelListener implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		
-		
+
 		if (e.getKeyChar() == 'u') {
-			
 			filename = "level2.txt";
 			System.out.println("U pressed");
 			System.out.println("in level " + 2);
 			try {
 				component.changeLevel(app.readFile(filename));
-
 			} catch (FileNotFoundException e1) {
 				e1.printStackTrace();
 			} catch (IOException e1) {
@@ -45,14 +43,12 @@ public class LevelListener implements KeyListener {
 			} catch (ObstacleNotFoundException e1) {
 				e1.printStackTrace();
 			}
-
 		} else if (e.getKeyChar() == 'd') {
 			filename = "level1.txt";
 			System.out.println("D pressed");
 			System.out.println("in level 1");
 			try {
 				component.changeLevel(app.readFile(filename));
-
 			} catch (FileNotFoundException e1) {
 				e1.printStackTrace();
 			} catch (IOException e1) {
@@ -60,25 +56,24 @@ public class LevelListener implements KeyListener {
 			} catch (ObstacleNotFoundException e1) {
 				e1.printStackTrace();
 			}
-		}
-		else if (e.getKeyChar() == 'x') {
+		} else if (e.getKeyChar() == 'x') {
 			app.close();
-		}
-		else if (e.getKeyChar() == 'r') {
+		} else if (e.getKeyChar() == 'r') {
 			app.restart();
 		}
 
 	}
-	
+
 	public String getFilename() {
 		return filename;
 	}
-	
+
 	public void setFilename(String file) {
 		filename = file;
 	}
-	
+
 	@Override
-	public void keyReleased(KeyEvent e) {}
+	public void keyReleased(KeyEvent e) {
+	}
 
 }

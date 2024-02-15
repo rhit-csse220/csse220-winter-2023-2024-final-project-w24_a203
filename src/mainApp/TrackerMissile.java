@@ -10,7 +10,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 /*
- * DONE: ADD JAVA DOCS
  * Class: TrackerMissile
  * Purpose: A tracking missile that the hero needs to avoid.
  * If the hero is hit, they lose a life. This missile tracks the hero's 
@@ -27,35 +26,26 @@ public class TrackerMissile extends Missile {
 		try {
 			image = ImageIO.read(new File("sprites/trackerMissile.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public void move() {
-		// TODO Auto-generated method stub
-//		super.move();
-//		System.out.println(follow.getY());
 		int heroY = follow.getY();
-		if(heroY < this.getY()) {
-			this.setY(this.getY()-5);
+		if (heroY < this.getY()) {
+			this.setY(this.getY() - 5);
+		} else {
+			this.setY(this.getY() + 5);
 		}
-		else {
-			this.setY(this.getY()+5);
-		}
-
 		this.setX(getX() - 15);
-		
 	}
-	
+
 	@Override
 	public Graphics2D drawOn(Graphics2D g) {
-		// TODO Auto-generated method stub
-		g = (Graphics2D)g.create();
+		g = (Graphics2D) g.create();
 		g.setColor(Color.MAGENTA);
 		g.drawImage(this.image, super.getX(), super.getY(), 75, 35, super.getFrame());
-//		g.fillRect(super.getX(), super.getY(), 35, 35);
 		return g;
 	}
 }

@@ -43,7 +43,7 @@ public class MainApp {
 	public static final int SCREEN_WIDTH = 1000;
 	public static final int ROWS = 4;
 	public static final Dimension FRAME_SIZE = new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT);
-//	private Hero hero = new Hero(250, 500);
+
 	private Hero hero;
 	private Timer timer;
 	private JFrame frame;
@@ -53,8 +53,6 @@ public class MainApp {
 	private ArrayList<GameObject> listOfObjects;
 	private MainComponent mainComponent;
 
-	// TODO add classes
-	// TODO check if the design does not violate 5 principles
 	private void runApp() throws IOException, ObstacleNotFoundException {
 		frame = new JFrame();
 		frame.setSize(FRAME_SIZE);
@@ -79,25 +77,19 @@ public class MainApp {
 				if (mainComponent.isLevelCompleted()) {
 					if (filename1.equals("level1.txt")) {
 						try {
-							//String filename = "level2.txt";
 							mainComponent.changeLevel(readFile("level2.txt"));
 							filename1 = "level2.txt";
 							levelListner.setFilename(filename1);
 						} catch (FileNotFoundException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						} catch (IOException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						} catch (ObstacleNotFoundException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 					} else if (filename1.equals("level2.txt")) {
-		
-	// TODO: JBUTTONS TO RESTART/EXIT GAME WHEN PLAYER WINS
 						gameOver();
-						
+
 					}
 				}
 				System.out.println(levelListner.getFilename());
@@ -105,17 +97,13 @@ public class MainApp {
 					try {
 						mainComponent.changeLevel(readFile(filename1));
 					} catch (FileNotFoundException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (ObstacleNotFoundException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
-				// mainComponent.print(null);
 				frame.repaint();
 			}
 		});
@@ -129,19 +117,18 @@ public class MainApp {
 		IfGameIsOver = true;
 		mainComponent.setGameOver(true);
 		frame.repaint();
-		
-	}
+
+	} // gameOver
+
 	public boolean getGameOver() {
 		return IfGameIsOver;
 	}
-	
-	public ArrayList<GameObject> readFile(String filename)
-			throws FileNotFoundException, IOException, ObstacleNotFoundException {
+
+	public ArrayList<GameObject> readFile(String filename) throws FileNotFoundException, IOException, ObstacleNotFoundException {
 
 		File file = new File(filename);
 
 		try {
-
 			Scanner scanner = new Scanner(file);
 			int row = 0;
 			listOfObjects = new ArrayList<GameObject>();
@@ -159,7 +146,7 @@ public class MainApp {
 					} else if (line.charAt(i) == 'B') {
 						listOfObjects.add(new Barrier(xVal, yVal));
 					} else if (line.charAt(i) == 'E') {
-						listOfObjects.add(new ElectricBarrier(xVal, yVal,frame));
+						listOfObjects.add(new ElectricBarrier(xVal, yVal, frame));
 					} else if (line.charAt(i) == 'M') {
 						listOfObjects.add(new Missile(xVal, yVal, frame));
 					} else if (line.charAt(i) == 'T') {
@@ -182,11 +169,6 @@ public class MainApp {
 		}
 	} // readFile
 
-	/**
-	 * ensures: runs the application
-	 * 
-	 * @param args unused
-	 */
 	public static void main(String[] args) throws IOException, ObstacleNotFoundException {
 		MainApp mainApp = new MainApp();
 
@@ -207,28 +189,23 @@ public class MainApp {
 	} // main
 
 	public void close() {
-		// TODO Auto-generated method stub
 		frame.dispose();
 		System.exit(0);
-	}
+	} // close
 
 	public void restart() {
-		// TODO Auto-generated method stub
 		IfGameIsOver = false;
 		mainComponent.setGameOver(false);
 		mainComponent.setLives(3);
 		try {
 			mainComponent.changeLevel(readFile("level1.txt"));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ObstacleNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	} // restart
 
 }

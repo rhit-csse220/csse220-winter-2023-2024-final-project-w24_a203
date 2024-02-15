@@ -25,7 +25,6 @@ import javax.swing.JTextField;
  */
 public class MainComponent extends JComponent {
 
-//	Hero hero = new Hero(200, 500);
 	private ArrayList<Missile> missiles = new ArrayList<Missile>();
 	private ArrayList<Barrier> barriers = new ArrayList<Barrier>();
 	private ArrayList<ElectricBarrier> electricBarriers = new ArrayList<ElectricBarrier>();
@@ -55,7 +54,6 @@ public class MainComponent extends JComponent {
 			image = ImageIO.read(new File("sprites/background.png"));
 			imageGameOver = ImageIO.read(new File("sprites/gameOver.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.x = 0;
@@ -105,22 +103,18 @@ public class MainComponent extends JComponent {
 				g2.drawString("Points: " + points, 10, 20);
 				g2.drawString("Lives : " + lives, 925, 20);
 				super.paintComponent(g);
-			} else {
-
-				// TODO: set font? or edit game over image to show what to do to replay/exit
+			} else { // LOSING SCREEN
 				g.drawImage(imageGameOver, 0, 0, MainApp.SCREEN_WIDTH, MainApp.SCREEN_HEIGHT, this.frame);
 				g2.setColor(Color.white);
-				g2.drawString("YOU LOSE :(", MainApp.SCREEN_WIDTH/2, MainApp.SCREEN_HEIGHT / 4);
-
+				g2.drawString("YOU LOSE :(", MainApp.SCREEN_WIDTH / 2, MainApp.SCREEN_HEIGHT / 4);
 			}
-		} else {
+		} else { // WINNING SCREEN
 			g.drawImage(imageGameOver, 0, 0, MainApp.SCREEN_WIDTH, MainApp.SCREEN_HEIGHT, this.frame);
 			g2.setColor(Color.white);
-			g2.drawString("YOU WON :)", MainApp.SCREEN_WIDTH/2, MainApp.SCREEN_HEIGHT / 4);
+			g2.drawString("YOU WON :)", MainApp.SCREEN_WIDTH / 2, MainApp.SCREEN_HEIGHT / 4);
 		}
-	}
+	} // paintComponent
 
-	// TODO: Add java doc
 	public void move() {
 		hero.move();
 		for (GameObject object : listOfObjects) {
@@ -128,7 +122,6 @@ public class MainComponent extends JComponent {
 		}
 	}
 
-	// TODO: Add java docs
 	public void removeObjects() {
 		ArrayList<GameObject> objectsToRemove = new ArrayList<GameObject>();
 		for (GameObject object : listOfObjects) {
@@ -187,13 +180,11 @@ public class MainComponent extends JComponent {
 	}
 
 	public void setLives(int lives) {
-		this.lives  = lives;
+		this.lives = lives;
 		this.points = 0;
-		
-	}
-	public void setGameOver(boolean gameState) {
-		// TODO Auto-generated method stub
-		IfGameIsOver = gameState;
 	}
 
+	public void setGameOver(boolean gameState) {
+		IfGameIsOver = gameState;
+	}
 }
