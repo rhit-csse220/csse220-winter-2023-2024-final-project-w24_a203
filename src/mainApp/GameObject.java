@@ -52,7 +52,7 @@ public abstract class GameObject {
 	}
 	
 	public void move() { // move screen
-		this.x -= 10; // TODO cahnge to 5
+		this.x -= 10; // TODO change to 5
 	}
 	public int getY() {
 		return this.y;
@@ -62,7 +62,6 @@ public abstract class GameObject {
 		return this.x;
 	}
 	public ImageObserver getFrame() {
-		// TODO Auto-generated method stub
 		return frame;
 	}
 	

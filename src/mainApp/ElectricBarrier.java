@@ -32,7 +32,6 @@ public class ElectricBarrier extends GameObject{
 		try {
 			image = ImageIO.read(new File("sprites/electricBarrier.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -44,7 +43,6 @@ public class ElectricBarrier extends GameObject{
 		g.setColor(Color.green);
 		g.rotate(angle, super.getX(), super.getY());
 		g.drawImage(image, super.getX(), super.getY(), 20, 200, super.getFrame());
-//		g.fillRect(super.getX(), super.getY(), 20, 200);
 		return g;
 	}
 
