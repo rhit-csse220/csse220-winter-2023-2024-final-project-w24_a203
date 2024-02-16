@@ -23,6 +23,8 @@ public class Hero extends GameObject {
 	private int velocityX;
 	private boolean fly;
 	private static final int HEIGHT = 50;
+	private static final int GRAVITY = 1;
+	private static final int JETPACK_ACCELERATION = -2;
 	private BufferedImage image;
 
 	public Hero(int x, int y, JFrame frame) {
@@ -39,9 +41,9 @@ public class Hero extends GameObject {
 
 	public void move() {
 		if (fly) {
-			velocityY += -2;
+			velocityY += JETPACK_ACCELERATION;
 		} else {
-			velocityY += 1;
+			velocityY += GRAVITY;
 		}
 
 		if (super.getY() > MainApp.SCREEN_HEIGHT - HEIGHT * 2 && velocityY > 0) {
