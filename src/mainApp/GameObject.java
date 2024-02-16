@@ -8,12 +8,10 @@ import java.util.Random;
 import javax.swing.JFrame;
 
 /**
- * TODO: ADD JAVA DOC HERE
  * Class: GameObject
- * Purpose: Abstract class that ___ each game object (coins, barriers, missiles)
+ * Purpose: Abstract class that keeps track of each game object (coins, barriers, missiles)
+ * It also deals with hero collision with each object.
  */
-
-//TODO Create the barrier and coin classes
 public abstract class GameObject {
 	
 	private int x, y;
