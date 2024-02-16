@@ -21,7 +21,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- * TODO: ADD JAVA DOC HERE
+ * Class: MainComponent <br>
+ * Purpose: Used to draw Coins, hero, ElctricBarriers, Barriers, Missiles, and
+ * trackerMissiles. Also, this class changes the level of the game, and hold
+ * display information about point and lives. <br>
+ * For example:
+ * 
+ * <pre>
+ * MainComponent mainComponent = new MainComponent(listOfObjects, hero, frame);
+ * </pre>
  */
 public class MainComponent extends JComponent {
 
